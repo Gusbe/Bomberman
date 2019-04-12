@@ -1,0 +1,120 @@
+___________B O M B E R M A N___________
+
+
+PLAYER:
+___________________________________________
+
+lifes = 3
+posX = 0
+posY = 0
+bombsAvailable = 1
+speed = 1
+
+move(direction)		//Modifies the position depending the direction (up, down, left, right)
+whatsNextCell(direction)	//Calculates the next cell coordinates depending the direction (up, down, left, right)
+reduceLifes(num)		//Reduces the number of lifes of the player
+reduceBombsAvailable(num)	//Reduces the number of bombs available of the player
+addBombsAvailable(num)	//Adds the number of bombs available of the player
+print()			//Prints the player in the actual position (removes the last one)
+
+
+
+
+
+ENEMY:
+___________________________________________
+
+posX = 50
+posY = 50
+speed = 1
+life = 0
+
+setFirstPosition()		//Generates a random position in the board for the first position
+GenerateRandomMovement()	//Look for where can moves and returns a direction
+move(direction)		//Modifies the position depending the direction (up, down, left, right)
+print()			//Prints the enemy in the actual position (removes the last one)
+remove()			//Eliminates the enemy from the grid
+
+
+
+
+
+GRID:
+___________________________________________
+
+boardSize = 10;
+board = [][];
+			//'W' -> Wall
+			//'S' -> Stone
+			//'P' -> Player
+			//'E' -> Enemy
+			//'B' -> Bomb
+			//'F' -> Fire
+			//'X' -> 'Nothing'
+
+printBoard()			//Prints all the grid values in the screen
+getCellElement(x,y)		//Returns the element in the coordinates given		
+removeInGrid(element,x,y)	//Remove any element in the grid
+putInGrid(element,x,y)	//Put any element in the grid
+
+
+
+
+
+BOMB:
+___________________________________________
+
+posX = 0
+posY = 0
+range = 3
+timer = 1
+owner = player
+
+
+plant()		//Puts a bomb in the grid
+print()		//Prints the bomb in the screen
+delete()		//Deletes bomb in the screen
+getFireCells()	//Calculates all the positions of the fire
+explode()		//Adds the 'Fire' elements in the grid
+printFire()		//Prints the fire in the screen
+deleteFire()		//Deletes the fire in the screen
+
+
+
+
+
+
+
+GAME:
+___________________________________________
+
+time = 200		//Time in seconds to destroy the enemies
+gameOver = false	//If it's true, the game jumps to the game-over page
+numEnemies = 3	//Number of enemies generated
+
+
+
+
+
+
+
+
+
+
+
+
+All the functions in a object that are not called outside of it, do not put in a prototype.
+
+
+
+
+
+
+
+
+Backlog:
+- timeot
+- sound
+- 2 players
+
+
