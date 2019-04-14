@@ -14,7 +14,13 @@ function main(){
 
   function buildSplashScreen(){
 
-    buildDom("<section><h1>Bomberman Splash page</h1><button class=\"start-button\">Start</button></section>");
+    buildDom(`
+    <section>
+      <div id="menu"></div>
+      <h1>Bomberman Splash page</h1>
+      <button class="start-button">Start</button>
+      <audio src="/sound/title.mp3" controls autoplay loop>
+    </section>`);
     const startButton = document.querySelector('.start-button');
     startButton.addEventListener('click', buildGameScreen);
   }
@@ -22,7 +28,7 @@ function main(){
 
   function buildGameScreen(){
 
-    const gameScreen = buildDom("<section><canvas class=\"game-container\"></canvas></section>");
+    const gameScreen = buildDom("<section><canvas class=\"game-container\"></canvas><audio src=\"/sound/game.mp3\" controls autoplay></section>");
     
     //make the canvas fits in the screen
     const gameContainerElement = document.querySelector('.game-container');
@@ -65,21 +71,21 @@ function main(){
 
   function buildGameOverScreen(){
 
-    buildDom("<section><h1>Game Over :(</h1><button class=\"restart-button\">Restart?</button></section>");
+    buildDom("<section><h1>Game Over :(</h1><button class=\"restart-button\">Restart?</button><audio src=\"/sound/gameover.mp3\" controls autoplay loop></section>");
     const restartButton = document.querySelector('.restart-button');
     restartButton.addEventListener('click',buildGameScreen);
   }
 
   function buildGameOverWithLifesScreen(){
     
-    buildDom("<section><h1>Game Over. But you can still playing! :)</h1><button class=\"restart-button\">Restart?</button></section>");
+    buildDom("<section><h1>Game Over. But you can still playing! :)</h1><button class=\"restart-button\">Restart?</button><audio src=\"/sound/gameover.mp3\" controls autoplay></section>");
     const restartButton = document.querySelector('.restart-button');
     restartButton.addEventListener('click',buildGameScreen);
   }
 
   function buildWinnerScreen(){
     
-    buildDom("<section><h1>You win!</h1><button class=\"restart-button\">Restart?</button></section>");
+    buildDom("<section><h1>You win!</h1><button class=\"restart-button\">Restart?</button><audio src=\"/sound/complete.mp3\" controls autoplay></section>");
     const restartButton = document.querySelector('.restart-button');
     restartButton.addEventListener('click',buildGameScreen);
   }

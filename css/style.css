@@ -2,6 +2,7 @@
 
 html {
   box-sizing: border-box;
+  background: rgb(0,34,245);
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -9,9 +10,24 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 150px;
+  color: white;
+  display: flex;
+  justify-content: center;
 }
 
 canvas {
-  border: 1px solid red;
+  background-image: url("/img/ground.png");
+}
+
+#menu {
+  background-image: url("../img/menu.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:800px;
+  height: 600px;
+}
+
+audio {
+  display: none;
 }
