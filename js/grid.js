@@ -5,24 +5,38 @@ function Grid(canvas){
   this.board = [[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
+  this.wallImage = new Image();
+  this.wallImage.src = "./img/wall.png";
+  this.woodImage = new Image();
+  this.woodImage.src = "./img/wood.png";
+  this.groundImage = new Image();
+  this.groundImage.src = "./img/ground.png";
+  this.bombermanImage = new Image();
+  this.bombermanImage.src = "./img/bomberman.gif";
+  this.bombImage = new Image();
+  this.bombImage.src = "./img/bomb.jpg";
+  this.fireImage = new Image();
+  this.fireImage.src = "./img/fire.jpg";
+  this.enemyImage = new Image();
+  this.enemyImage.src = "./img/enemy.png";
 }
 
 
 Grid.prototype.configureBoard = function (){
 
   this.board[0] = ['W','W','W','W','W','W','W','W','W','W','W'];
-  this.board[1] = ['W','X','X','X','X','X','X','X','X','X','W'];
+  this.board[1] = ['W','P','X','S','X','X','X','X','X','X','W'];
   this.board[2] = ['W','X','W','X','W','X','W','X','W','S','W'];
-  this.board[3] = ['W','X','X','X','X','X','X','X','X','X','W'];
+  this.board[3] = ['W','S','X','X','X','X','X','X','X','X','W'];
   this.board[4] = ['W','X','W','X','W','X','W','X','W','X','W'];
   this.board[5] = ['W','S','X','X','X','X','X','X','X','S','W'];
   this.board[6] = ['W','X','W','X','W','X','W','X','W','X','W'];
   this.board[7] = ['W','X','X','X','X','S','X','X','X','X','W'];
   this.board[8] = ['W','X','W','X','W','X','W','X','W','X','W'];
-  this.board[9] = ['W','X','S','X','X','X','X','X','X','X','W'];
+  this.board[9] = ['W','X','S','X','X','X','X','X','X','S','W'];
   this.board[10] = ['W','X','W','X','W','S','W','X','W','X','W'];
-  this.board[11] = ['W','X','X','X','X','X','X','X','X','X','W'];
-  this.board[12] = ['W','X','W','X','W','X','W','S','W','X','W'];
+  this.board[11] = ['W','S','X','X','X','S','X','X','X','X','W'];
+  this.board[12] = ['W','X','W','X','W','S','W','S','W','X','W'];
   this.board[13] = ['W','X','S','X','S','X','X','S','X','X','W'];
   this.board[14] = ['W','W','W','W','W','W','W','W','W','W','W'];
 }
@@ -58,7 +72,8 @@ Grid.prototype.printBoard = function (){
 
 
 Grid.prototype.printElement = function(element, x, y){
-  
+
+  /*
   let color = '';
   switch (element){
     case 'W': color = 'grey';
@@ -75,4 +90,33 @@ Grid.prototype.printElement = function(element, x, y){
 
   this.ctx.fillStyle = color;
   this.ctx.fillRect(y*50, x*50, 50, 50);
+  */
+
+ let color = '';
+ switch (element){
+
+   case 'W':  
+              this.ctx.drawImage(this.wallImage, y*32, x*32, 32, 32);
+              break;
+
+   case 'X':  this.ctx.drawImage(this.groundImage, y*32, x*32, 32, 32);
+             break;
+
+   case 'S': this.ctx.drawImage(this.woodImage, y*32, x*32, 32, 32);
+             break;
+
+   case 'P': this.ctx.drawImage(this.bombermanImage, y*32, x*32, 32, 32);
+             break;
+
+    case 'B': this.ctx.drawImage(this.bombImage, y*32, x*32, 32, 32);
+              break;
+
+   case 'F': 
+            this.ctx.drawImage(this.fireImage, y*32, x*32, 32, 32);
+             break;
+    case 'E': 
+            this.ctx.drawImage(this.enemyImage, y*32, x*32, 32, 32);
+            break;
+ }
+  
 }

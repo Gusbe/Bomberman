@@ -4,31 +4,34 @@ function Bomb (canvas, x, y) {
 
   this.posX = x;
   this.posY = y;
-  this.range = 6;
+  this.range = 4;
   this.timer = 2500;  //milliSeconds
-  this.durationExplosion = 3000;  //milliSeconds
+  this.durationExplosion = 1000;  //milliSeconds
   this.startTimer = Date.now();
   this.hasExploded = false;
   this.fireCells = [];
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
+  this.bombImage = new Image();
+  this.bombImage.src = "./img/bomb.jpg";
+  this.fireImage = new Image();
+  this.fireImage.src = "./img/fire.jpg";
 }
 
 Bomb.prototype.print = function () {
 
   if(!this.hasExploded){
 
-    this.ctx.fillStyle = 'black';
-    this.ctx.fillRect(this.posX*50, this.posY*50, 50, 50);
+    this.ctx.drawImage(this.bombImage, this.posX*32, this.posY*32, 32, 32);
   }
 }
 
 Bomb.prototype.printFire = function () {
 
-  this.ctx.fillStyle = 'orange';
+  
   for(let i = 0 ; i < this.fireCells.length ; i++){
     
-    this.ctx.fillRect(this.fireCells[i][0]*50, this.fireCells[i][1]*50, 50, 50);
+    this.ctx.drawImage(this.fireImage, this.fireCells[i][0]*32, this.fireCells[i][1]*32, 32, 32);
   }
 }
 

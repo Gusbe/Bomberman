@@ -1,13 +1,15 @@
 'use scrict'
 
-function Game(canvas) {
+function Game(canvas, initCredits) {
   this.grid = null;
   this.player = null;
+  this.credits = initCredits;
   this.enemies = [];
   this.bombs = [];
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
   this.gameOver = false;
+  this.winner = false;
 }
 
 Game.prototype.movePlayer = function (direction) {
@@ -67,19 +69,15 @@ Game.prototype.moveEnemies = function (grid) {
 
 Game.prototype.dead = function () {
   
-  this.player.lifes--;
+  this.credits--;
   this.gameOver = true;
 }
 
-Game.prototype.winner = function () {
+Game.prototype.checkIfWinner = function () {
 
   if(this.enemies.length === 0){
   
-    return true;
-  }
-  else{
-
-    return false;
+    this.winner = true;
   }
 }
 
@@ -90,8 +88,10 @@ Game.prototype.startLoop = function () {
 
   this.player = new Player(this.canvas);
 
-  this.enemies.push(new Enemy(this.canvas));
-  this.enemies.push(new Enemy(this.canvas));
+  this.enemies.push(new Enemy(this.canvas,7,8));
+  this.enemies.push(new Enemy(this.canvas,8,3));
+  this.enemies.push(new Enemy(this.canvas,10,5));
+
   
 
   
@@ -103,7 +103,8 @@ Game.prototype.startLoop = function () {
     this.clearCanvas(); //Deletes all in the canvas
     this.grid.printBoard(); //Print board in the canvas
     this.updateCanvas();  //Prints elements in the canvas
-  
+    this.checkIfWinner();
+
     this.moveEnemies(this.grid);
 
     for(let i = 0 ; i < this.bombs.length ; i++){
@@ -123,20 +124,24 @@ Game.prototype.startLoop = function () {
       }
     }
     
+
+
+
+
   
-    if(!this.gameOver && !this.winner()) {
+    if(!this.gameOver && !this.winner) {
 
       window.requestAnimationFrame(loop);
     }
-    else if(this.winner()){
+    else if(this.winner){
 
       setTimeout(this.buildWinnerScreen,2000);
     }
-    else if(this.player.lifes > 0){
+    else if(this.credits > 0){
     
       setTimeout(this.buildGameOverWithLifesScreen,2000);
     }
-    else if(this.player.lifes === 0){
+    else if(this.credits === 0){
       
       setTimeout(this.buildGameOverScreen,2000);
     }
@@ -158,9 +163,15 @@ Game.prototype.explosion = function (bomb) {
   
     switch (this.grid.getCellElement(fireCells[i][0],fireCells[i][1])){
 
-      case 'P': playerDead = true; break; //TODO: Kills player
+      case 'P': //Kills the player
+                playerDead = true;
+                break;
 
-      case 'E': 
+      case 'S': //Breaks the wall
+                this.grid.putInGrid('X', fireCells[i][0], fireCells[i][1]);
+                break;
+
+      case 'E': //Kills the enemy
                 for( let j = 0 ; j < this.enemies.length ; j++){
                 
                   if(this.enemies[j].posX === fireCells[i][0] && this.enemies[j].posY === fireCells[i][1]){
@@ -168,20 +179,19 @@ Game.prototype.explosion = function (bomb) {
                     this.grid.putInGrid('X', fireCells[i][0], fireCells[i][1]);
                   }
                 }
-                break; //TODO: Kills enemy
-
-      case 'S': this.grid.putInGrid('X', fireCells[i][0], fireCells[i][1]);
                 break;
 
-      case 'B':
+      case 'B': //Explodes the near bomb
                 for( let j = 0 ; j < this.bombs.length ; j++){
       
                   this.bombs[j].makeExplode(fireCells[i][0], fireCells[i][1]);
                 }
                 break;
     }
+
     this.grid.putInGrid('F', fireCells[i][0], fireCells[i][1]); //Put fire in the grid
   }
+
   if(playerDead){
     this.dead();
   }
@@ -204,7 +214,7 @@ Game.prototype.updateCanvas = function () {
     enemy.print();
   });
   
-  this.player.print();
+  //this.player.print();
 }
 
 Game.prototype.setGameOverCallBack = function(buildGameOverScreen){  //To have access on fucntion in another files

@@ -1,12 +1,14 @@
 'use scrict'
 
-function Enemy(canvas){
-  this.posX = 3;
-  this.posY = 3;
+function Enemy(canvas, initX, initY){
+  this.posX = initX;
+  this.posY = initY;
   this.speed = 750; //milliSeconds by square;
   this.lastMove = Date.now();
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
+  this.enemyImage = new Image();
+  this.enemyImage.src = "./img/enemy.png";
 }
 
 Enemy.prototype.canIMoveNow = function (){
@@ -43,8 +45,7 @@ Enemy.prototype.NextPosition = function(direction) {
 
 Enemy.prototype.print = function () {
 
-  this.ctx.fillStyle = 'red';
-  this.ctx.fillRect(this.posX*50, this.posY*50, 50, 50);
+  this.ctx.drawImage(this.enemyImage, this.posX*32, this.posY*32, 32, 32);
 }
 
 Enemy.prototype.kills = function (x, y) {

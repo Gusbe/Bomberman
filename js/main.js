@@ -11,12 +11,14 @@ function main(){
     return mainElement;
   }
 
+
   function buildSplashScreen(){
 
     buildDom("<section><h1>Bomberman Splash page</h1><button class=\"start-button\">Start</button></section>");
     const startButton = document.querySelector('.start-button');
     startButton.addEventListener('click', buildGameScreen);
   }
+
 
   function buildGameScreen(){
 
@@ -26,8 +28,8 @@ function main(){
     const gameContainerElement = document.querySelector('.game-container');
     // const width = gameContainerElement.offsetWidth;
     // const height = gameContainerElement.offsetHeight;
-    width = 750;
-    height = 550;
+    width = 480;
+    height = 352;
 
     const canvasElement = document.querySelector('canvas');
     canvasElement.setAttribute('width', width);
@@ -35,7 +37,7 @@ function main(){
 
     //Here starts the game
 
-    const game = new Game(canvasElement);
+    const game = new Game(canvasElement,3);
     game.startLoop();
     game.setGameOverCallBack(buildGameOverScreen);
     game.setGameOverWithLifesCallBack(buildGameOverWithLifesScreen);
