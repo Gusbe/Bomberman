@@ -12,18 +12,18 @@ Grid.prototype.configureBoard = function (){
 
   this.board[0] = ['W','W','W','W','W','W','W','W','W','W','W'];
   this.board[1] = ['W','X','X','X','X','X','X','X','X','X','W'];
-  this.board[2] = ['W','X','W','X','W','X','W','X','W','X','W'];
+  this.board[2] = ['W','X','W','X','W','X','W','X','W','S','W'];
   this.board[3] = ['W','X','X','X','X','X','X','X','X','X','W'];
   this.board[4] = ['W','X','W','X','W','X','W','X','W','X','W'];
-  this.board[5] = ['W','X','X','X','X','X','X','X','X','X','W'];
+  this.board[5] = ['W','S','X','X','X','X','X','X','X','S','W'];
   this.board[6] = ['W','X','W','X','W','X','W','X','W','X','W'];
-  this.board[7] = ['W','X','X','X','X','X','X','X','X','X','W'];
+  this.board[7] = ['W','X','X','X','X','S','X','X','X','X','W'];
   this.board[8] = ['W','X','W','X','W','X','W','X','W','X','W'];
-  this.board[9] = ['W','X','X','X','X','X','X','X','X','X','W'];
+  this.board[9] = ['W','X','S','X','X','X','X','X','X','X','W'];
   this.board[10] = ['W','X','W','X','W','S','W','X','W','X','W'];
   this.board[11] = ['W','X','X','X','X','X','X','X','X','X','W'];
-  this.board[12] = ['W','X','W','X','W','X','W','X','W','X','W'];
-  this.board[13] = ['W','X','X','X','X','X','X','X','X','X','W'];
+  this.board[12] = ['W','X','W','X','W','X','W','S','W','X','W'];
+  this.board[13] = ['W','X','S','X','S','X','X','S','X','X','W'];
   this.board[14] = ['W','W','W','W','W','W','W','W','W','W','W'];
 }
 
@@ -40,16 +40,17 @@ Grid.prototype.removeFromGrid = function (x, y){
 }
 
 
-Grid.prototype.putInGrid = function (Element, x, y){
+Grid.prototype.putInGrid = function (element, x, y){
 
-  this.board[x][y] = Element;
+  this.board[x][y] = element;
 }
 
 
 Grid.prototype.printBoard = function (){
-
+  
   for(let i = 0 ; i < this.board.length ; i++){
     for(let j = 0 ; j < this.board[i].length ; j++){
+      
       this.printElement(this.getCellElement(i,j),j,i);
     }
   }
@@ -67,6 +68,8 @@ Grid.prototype.printElement = function(element, x, y){
     case 'S': color = 'brown';
               break;
     case 'P': color = 'blue';
+              break;
+    case 'F': color = 'orange';
               break;
   }
 

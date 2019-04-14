@@ -11,3 +11,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
+canvas {
+  border: 1px solid red;
+}

@@ -1,1 +1,223 @@
 'use scrict'
+
+function Game(canvas) {
+  this.grid = null;
+  this.player = null;
+  this.enemies = [];
+  this.bombs = [];
+  this.canvas = canvas;
+  this.ctx = this.canvas.getContext('2d');
+  this.gameOver = false;
+}
+
+Game.prototype.movePlayer = function (direction) {
+
+  let nextCoordinates = this.player.nextPosition(direction);
+  let element = this.grid.getCellElement(nextCoordinates[0],nextCoordinates[1]);
+  switch(element){
+
+    case 'X':
+              if(this.grid.getCellElement(this.player.posX,this.player.posY) !== 'B'){
+                this.grid.putInGrid('X',this.player.posX,this.player.posY);
+              } 
+              this.player.move(nextCoordinates[0],nextCoordinates[1]);
+              this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
+              break;
+    case 'W': break; //nothing
+    case 'B': break; //nothing
+    case 'S': break; //nothing
+    case 'E': this.dead(); break;
+    case 'F': this.dead(); break;
+    
+  }
+}
+
+Game.prototype.plantBomb = function () {
+
+  if(this.player.bombsAvailable > 0){
+    this.player.bombsAvailable--;
+    this.bombs.push(new Bomb(this.canvas,this.player.posX,this.player.posY));
+    this.grid.putInGrid('B',this.player.posX,this.player.posY);
+  }
+}
+
+Game.prototype.moveEnemies = function (grid) {
+
+  for(let i = 0 ; i < this.enemies.length ; i++){
+    
+    if(this.enemies[i].canIMoveNow()){
+
+      this.grid.putInGrid('X',this.enemies[i].posX,this.enemies[i].posY);
+      this.enemies[i].GenerateRandomMovement(grid);
+    
+      if(this.grid.getCellElement(this.enemies[i].posX,this.enemies[i].posY) === 'F'){
+  
+        this.enemies.splice(i,1);
+      }
+      else if(this.enemies[i].kills(this.player.posX, this.player.posY)){
+        
+        this.dead();
+      }
+      else{
+        this.grid.putInGrid('E',this.enemies[i].posX,this.enemies[i].posY);
+      }
+    }
+  }
+}
+
+Game.prototype.dead = function () {
+  
+  this.player.lifes--;
+  this.gameOver = true;
+}
+
+Game.prototype.winner = function () {
+
+  if(this.enemies.length === 0){
+  
+    return true;
+  }
+  else{
+
+    return false;
+  }
+}
+
+Game.prototype.startLoop = function () {
+
+  this.grid = new Grid(this.canvas);
+  this.grid.configureBoard();
+
+  this.player = new Player(this.canvas);
+
+  this.enemies.push(new Enemy(this.canvas));
+  this.enemies.push(new Enemy(this.canvas));
+  
+
+  
+
+
+  const loop = () => {
+    
+    
+    this.clearCanvas(); //Deletes all in the canvas
+    this.grid.printBoard(); //Print board in the canvas
+    this.updateCanvas();  //Prints elements in the canvas
+  
+    this.moveEnemies(this.grid);
+
+    for(let i = 0 ; i < this.bombs.length ; i++){
+      if(this.bombs[i].checkIfExplodes()){
+
+        this.explosion(this.bombs[i]);
+        this.player.bombsAvailable++;
+
+      }
+      if(this.bombs[i].checkRemoveFire()){
+        
+        for(let j = 0 ; j < this.bombs[i].fireCells.length ; j++){
+
+          this.grid.putInGrid('X', this.bombs[i].fireCells[j][0],  this.bombs[i].fireCells[j][1]);
+        }
+        this.bombs.splice(i, 1);
+      }
+    }
+    
+  
+    if(!this.gameOver && !this.winner()) {
+
+      window.requestAnimationFrame(loop);
+    }
+    else if(this.winner()){
+
+      setTimeout(this.buildWinnerScreen,2000);
+    }
+    else if(this.player.lifes > 0){
+    
+      setTimeout(this.buildGameOverWithLifesScreen,2000);
+    }
+    else if(this.player.lifes === 0){
+      
+      setTimeout(this.buildGameOverScreen,2000);
+    }
+    
+    
+    
+  }
+  
+    window.requestAnimationFrame(loop);
+    
+  
+}
+
+Game.prototype.explosion = function (bomb) {
+  
+  let fireCells = bomb.getFireCells(this.grid);
+  let playerDead = false;
+  for(let i = 0 ; i < fireCells.length ; i++){
+  
+    switch (this.grid.getCellElement(fireCells[i][0],fireCells[i][1])){
+
+      case 'P': playerDead = true; break; //TODO: Kills player
+
+      case 'E': 
+                for( let j = 0 ; j < this.enemies.length ; j++){
+                
+                  if(this.enemies[j].posX === fireCells[i][0] && this.enemies[j].posY === fireCells[i][1]){
+                    this.enemies.splice(j,1);
+                    this.grid.putInGrid('X', fireCells[i][0], fireCells[i][1]);
+                  }
+                }
+                break; //TODO: Kills enemy
+
+      case 'S': this.grid.putInGrid('X', fireCells[i][0], fireCells[i][1]);
+                break;
+
+      case 'B':
+                for( let j = 0 ; j < this.bombs.length ; j++){
+      
+                  this.bombs[j].makeExplode(fireCells[i][0], fireCells[i][1]);
+                }
+                break;
+    }
+    this.grid.putInGrid('F', fireCells[i][0], fireCells[i][1]); //Put fire in the grid
+  }
+  if(playerDead){
+    this.dead();
+  }
+  
+}
+
+
+Game.prototype.clearCanvas = function () {
+
+  this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+}
+
+Game.prototype.updateCanvas = function () {
+
+  this.bombs.forEach( function(bomb) {
+    bomb.print();
+  });
+  
+  this.enemies.forEach( function(enemy) {
+    enemy.print();
+  });
+  
+  this.player.print();
+}
+
+Game.prototype.setGameOverCallBack = function(buildGameOverScreen){  //To have access on fucntion in another files
+  
+  this.buildGameOverScreen = buildGameOverScreen;
+}
+
+Game.prototype.setGameOverWithLifesCallBack = function(buildGameOverWithLifesScreen){  //To have access on fucntion in another files
+  
+  this.buildGameOverWithLifesScreen = buildGameOverWithLifesScreen;
+}
+
+Game.prototype.setWinnerCallBack = function(buildWinnerScreen){  //To have access on fucntion in another files
+  
+  this.buildWinnerScreen = buildWinnerScreen;
+}
