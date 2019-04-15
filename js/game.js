@@ -10,6 +10,8 @@ function Game(canvas, initCredits) {
   this.ctx = this.canvas.getContext('2d');
   this.gameOver = false;
   this.winner = false;
+  this.timeStart = Date.now();
+  this.timer = 100; //Seconds
 }
 
 Game.prototype.movePlayer = function (direction) {
@@ -93,6 +95,8 @@ Game.prototype.startLoop = function () {
   this.enemies.push(new Enemy(this.canvas,10,5));
   this.enemies.push(new Enemy(this.canvas,12,7));
 
+  
+
 
   const loop = () => {
     
@@ -101,7 +105,8 @@ Game.prototype.startLoop = function () {
     this.grid.printBoard(); //Print board in the canvas
     this.updateCanvas();  //Prints elements in the canvas
     this.checkIfWinner();
-    this.updateBombsAvailable(this.player.bombsAvailable);
+    this.updateScreenCounters(this.player.bombsAvailable);
+    if (this.timeUp() === 0) this.dead();
     
     
 
@@ -217,15 +222,22 @@ Game.prototype.updateCanvas = function () {
   //this.player.print();
 }
 
-Game.prototype.updateBombsAvailable = function (numberOfBombs){
+Game.prototype.updateScreenCounters = function (numberOfBombs){
   let bombsInfo = document.getElementById('bombs');
+  let timeInfo = document.getElementById('time');
   
   let bombsScreen = "";
   for (let i = 0 ; i < numberOfBombs ; i ++){
     bombsScreen = bombsScreen + `<img src="./img/bomb.png" id="bombsScreen">`;
   }
-  
   bombsInfo.innerHTML = bombsScreen;
+  console.log(bombsInfo);
+  timeInfo.innerHTML = "Time: " + this.timeUp();
+}
+
+Game.prototype.timeUp = function (){
+
+  return Math.floor(this.timer - (Date.now()-this.timeStart)/1000);
 }
 
 Game.prototype.setGameOverCallBack = function(buildGameOverScreen){  //To have access on fucntion in another files
