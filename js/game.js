@@ -94,8 +94,6 @@ Game.prototype.startLoop = function () {
   this.enemies.push(new Enemy(this.canvas,12,7));
   
 
-  
-
 
   const loop = () => {
     

@@ -13,7 +13,7 @@ function Bomb (canvas, x, y) {
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
   this.bombImage = new Image();
-  this.bombImage.src = "./img/bomb.jpg";
+  this.bombImage.src = "./img/bomb.png";
   this.fireImage = new Image();
   this.fireImage.src = "./img/fire.jpg";
 }

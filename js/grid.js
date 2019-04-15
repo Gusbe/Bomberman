@@ -6,18 +6,19 @@ function Grid(canvas){
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
   this.wallImage = new Image();
-  this.wallImage.src = "./img/wall.png";
   this.woodImage = new Image();
-  this.woodImage.src = "./img/wood.png";
   this.groundImage = new Image();
-  this.groundImage.src = "./img/ground.png";
   this.bombermanImage = new Image();
-  this.bombermanImage.src = "./img/bomberman.gif";
   this.bombImage = new Image();
-  this.bombImage.src = "./img/bomb.jpg";
   this.fireImage = new Image();
-  this.fireImage.src = "./img/fire.jpg";
   this.enemyImage = new Image();
+  
+  this.wallImage.src = "./img/wall.png";
+  this.woodImage.src = "./img/wood.png";
+  this.groundImage.src = "./img/ground.png";
+  this.bombermanImage.src = "./img/bomberman.gif";
+  this.bombImage.src = "./img/bomb.png";
+  this.fireImage.src = "./img/fire.jpg";
   this.enemyImage.src = "./img/enemy.png";
 }
 
