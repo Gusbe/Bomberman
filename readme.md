@@ -48,6 +48,7 @@ setWinnerCallBack()
 
 
 ###Player.js
+```
 function Player(canvas){
   this.posX = 1;
   this.posY = 1;
@@ -61,9 +62,10 @@ move()
 nextPosition()
 addBombsAvailable()
 reduceBombsAvailable()
-
+```
 
 ###Enemy.js
+```
 function Enemy(canvas, initX, initY){
   this.posX = initX;
   this.posY = initY;
@@ -81,9 +83,10 @@ NextPosition()
 print()
 kills()
 GenerateRandomMovement()
-
+```
 
 ###Grid.js
+```
 function Grid(canvas){
 
   this.board = [[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
@@ -102,9 +105,10 @@ Grid.prototype.configureBoard()
 Grid.prototype.getCellElement()
 Grid.prototype.removeFromGrid()
 Grid.prototype.putInGrid()
-
+```
 
 ###Bomb.js
+```
 function Bomb (canvas, x, y) {
 
   this.posX = x;
@@ -127,7 +131,7 @@ checkIfExplodes()
 makeExplode()
 checkRemoveFire()
 getFireCells()
-
+```
 
 ## States y States Transitions
 splashScreen
