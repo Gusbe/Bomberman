@@ -69,8 +69,8 @@ Game.prototype.moveEnemies = function (grid) {
   }
 }
 
-Game.prototype.dead = function () {
-  
+Game.prototype.dead = function (causeOfDeath) {
+  this.player.printDead(causeOfDeath);
   this.credits--;
   this.gameOver = true;
 }
@@ -102,9 +102,7 @@ Game.prototype.startLoop = function () {
   const loop = () => {
     
     
-    this.clearCanvas(); //Deletes all in the canvas
-    this.grid.printBoard(); //Print board in the canvas
-    this.updateCanvas();  //Prints elements in the canvas
+    this.refreshScreen();
     this.checkIfWinner();
     this.updateScreenCounters(this.player.bombsAvailable);
     if (this.timeUp() === 0) this.dead();
@@ -199,11 +197,19 @@ Game.prototype.explosion = function (bomb) {
   }
 
   if(playerDead){
-    this.dead();
+    this.refreshScreen();
+    this.dead('fire');
   }
   
 }
 
+
+Game.prototype.refreshScreen = function() {
+
+  this.clearCanvas(); //Deletes all in the canvas
+  this.grid.printBoard(); //Print board in the canvas
+  this.updateCanvas();  //Prints elements in the canvas
+}
 
 Game.prototype.clearCanvas = function () {
 

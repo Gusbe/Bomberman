@@ -18,7 +18,7 @@ function Grid(canvas){
   this.groundImage.src = "./img/ground.png";
   this.bombermanImage.src = "./img/bomberman.gif";
   this.bombImage.src = "./img/bomb.png";
-  this.fireImage.src = "./img/fire.jpg";
+  this.fireImage.src = "./img/fire.png";
   this.enemyImage.src = "./img/enemy.png";
 }
 
