@@ -2,32 +2,68 @@
 
 html {
   box-sizing: border-box;
-  background: rgb(0,34,245);
+  background: rgb(13,0,255);
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
 body {
-  margin: 0;
-  padding: 150px;
+  padding-top: 100px;
   color: white;
+  font-family: 'Press Start 2P';
   display: flex;
   justify-content: center;
 }
 
-canvas {
-  background-image: url("/img/ground.png");
+
+main {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  
 }
 
-#menu {
-  background-image: url("../img/menu.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width:800px;
-  height: 600px;
+canvas {
+  background-image: url("/img/ground.png");
+  width: 480px;
+  height: 352px;
+}
+
+section {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 800px;
+  
+}
+
+#title {
+  
+  width:700px;
+  height: auto;
 }
 
 audio {
   display: none;
+}
+
+#play {
+  font-size: 30px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+}
+
+#play:hover {
+  color: orange;
+}
+#instructions-title {
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+#instructions {
+  font-size: 14px;
 }

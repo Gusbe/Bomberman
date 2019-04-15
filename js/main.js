@@ -16,12 +16,15 @@ function main(){
 
     buildDom(`
     <section>
-      <div id="menu"></div>
-      <h1>Bomberman Splash page</h1>
-      <button class="start-button">Start</button>
+      <img id="title" src="./img/menu.jpg">
+      <a id="play" href="#">PLAY GAME</a>
+      <p id="instructions-title">Instructions:</p>
+      <p  id="instructions">Move the player with the arrows. Put a bomb with the space bar.</p>
+      <p  id="instructions">Destroy all the enemies before the times up. Don't explode yourself :)</p>
+
       <audio src="/sound/title.mp3" controls autoplay loop>
     </section>`);
-    const startButton = document.querySelector('.start-button');
+    const startButton = document.querySelector('#play');
     startButton.addEventListener('click', buildGameScreen);
   }
 
