@@ -17,7 +17,7 @@ Two players game
 
 ## Data structure
 
-###Game.js
+### Game.js
 ```
 function Game(canvas, initCredits) {
   this.grid = null;
@@ -47,7 +47,7 @@ setWinnerCallBack()
 
 
 
-###Player.js
+### Player.js
 ```
 function Player(canvas){
   this.posX = 1;
@@ -64,7 +64,7 @@ addBombsAvailable()
 reduceBombsAvailable()
 ```
 
-###Enemy.js
+### Enemy.js
 ```
 function Enemy(canvas, initX, initY){
   this.posX = initX;
@@ -85,7 +85,7 @@ kills()
 GenerateRandomMovement()
 ```
 
-###Grid.js
+### Grid.js
 ```
 function Grid(canvas){
 
@@ -107,7 +107,7 @@ Grid.prototype.removeFromGrid()
 Grid.prototype.putInGrid()
 ```
 
-###Bomb.js
+### Bomb.js
 ```
 function Bomb (canvas, x, y) {
 
@@ -134,55 +134,49 @@ getFireCells()
 ```
 
 ## States y States Transitions
-splashScreen
-GameScreen
-GameOverScreen
-GameWinScreen
+- splashScreen
+- GameScreen
+- GameOverScreen
+- GameWinScreen
 
 
 ## Task
-Splash, game and gameover pages
-Game - startLoop()
-Game - DrawingBoard
-Grid - configureBoard()
-Grid - getCellElement()
-Grid - removeFromGrid()
-Grid - putInGrid()
-Player - move()
-Player - nextPosition()
-Player -  addBombsAvailable()
-Player - reduceBombsAvailable()
-Game - Game logic to interact with player
-Bomb - print()
-Bomb - printFire()
-Bomb - checkIfExplodes()
-Bomb - makeExplode()
-Bomb - checkRemoveFire()
-Bomb - getFireCells()
-Game - Game logic to interact with boms
-Enemy - canIMoveNow()
-Enemy - move()
-Enemy - NextPosition()
-Enemy - print()
-Enemy - kills()
-Enemy - GenerateRandomMovement()
-Game - Game logic to interact with boms
-Game - Game over
+- Splash, game and gameover pages
+- Game - startLoop()
+- Game - DrawingBoard
+- Grid - configureBoard()
+- Grid - getCellElement()
+- Grid - removeFromGrid()
+- Grid - putInGrid()
+- Player - move()
+- Player - nextPosition()
+- Player -  addBombsAvailable()
+- Player - reduceBombsAvailable()
+- Game - Game logic to interact with player
+- Bomb - print()
+- Bomb - printFire()
+- Bomb - checkIfExplodes()
+- Bomb - makeExplode()
+- Bomb - checkRemoveFire()
+- Bomb - getFireCells()
+- Game - Game logic to interact with boms
+- Enemy - canIMoveNow()
+- Enemy - move()
+- Enemy - NextPosition()
+- Enemy - print()
+- Enemy - kills()
+- Enemy - GenerateRandomMovement()
+- Game - Game logic to interact with boms
+- Game - Game over
 
 
 
 
 ## Links
 
-
-### Trello
-[Link url](https://trello.com)
-
-
 ### Git
 URls for the project repo and deploy
-[Link Repo](http://github.com)
-[Link Deploy](http://github.com)
+[Link Repo](http://github.com/gusbe/bomberman)
 
 
 ### Slides
