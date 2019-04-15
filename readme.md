@@ -9,8 +9,7 @@ MVP allows to move the player across the board and plant a bomb. Will be in canv
 
 
 ## Backlog
-Enemies with random movements
-Sound
+Sounds in actions
 Items appears in the game to power up things.
 Differents scenarios
 Differents levels of dificulties
@@ -19,113 +18,150 @@ Two players game
 ## Data structure
 
 ###Game.js
-Game() {
-  this.player;
-  this.enemies;
-  this.canvas;
-  this.ctx;
-  this.gameOver;
+function Game(canvas, initCredits) {
+  this.grid = null;
+  this.player = null;
+  this.credits = initCredits;
+  this.enemies = [];
+  this.bombs = [];
+  this.canvas = canvas;
+  this.ctx = this.canvas.getContext('2d');
+  this.gameOver = false;
+  this.winner = false;
 }
 
-Game.prototype.startLoop()
-Game.prototype.clearCanvas()
-Game.prototype.updateCanvas()
-Game.prototype.drawCanvas()
+movePlayer()
+plantBomb()
+moveEnemies()
+dead()
+checkIfWinner()
+startLoop()
+explosion()
+clearCanvas()
+updateCanvas()
+setGameOverCallBack() 
+setGameOverWithLifesCallBack()
+setWinnerCallBack()
+
+
+
 
 ###Player.js
-Player(){
-  this.lifes;
-  this.posX;
-  this.posY;
-  bombsAvailable;
-  speed;
+function Player(canvas){
+  this.posX = 1;
+  this.posY = 1;
+  this.bombsAvailable = 4;
+  this.speed = 1;
+  this.canvas = canvas;
+  this.ctx = this.canvas.getContext('2d');
 }
 
-Player.prototype.move()
-Player.prototype.whatsNextCell()
-Player.prototype.reduceLifes()
-Player.prototype.reduceBombsAvailable()
-Player.prototype.addBombsAvailable()
-Player.prototype.print()
+move()
+nextPosition()
+addBombsAvailable()
+reduceBombsAvailable()
+
 
 ###Enemy.js
-Enemy(){
-  this.posX
-  this.posY
-  this.speed
-  this.life
+function Enemy(canvas, initX, initY){
+  this.posX = initX;
+  this.posY = initY;
+  this.speed = 750; //milliSeconds by square;
+  this.lastMove = Date.now();
+  this.canvas = canvas;
+  this.ctx = this.canvas.getContext('2d');
+  this.enemyImage = new Image();
+  this.enemyImage.src = "./img/enemy.png";
 }
 
-Enemy.prototype.setFirstPosition()
-Enemy.prototype.GenerateRandomMovement()
-Enemy.prototype.move(direction)
-Enemy.prototype.print()
-Enemy.prototype.remove()
+canIMoveNow()
+move()
+NextPosition()
+print()
+kills()
+GenerateRandomMovement()
+
 
 ###Grid.js
-Grid(){
-  this.board = [][];
+function Grid(canvas){
+
+  this.board = [[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+  this.canvas = canvas;
+  this.ctx = this.canvas.getContext('2d');
+  this.wallImage = new Image();
+  this.woodImage = new Image();
+  this.groundImage = new Image();
+  this.bombermanImage = new Image();
+  this.bombImage = new Image();
+  this.fireImage = new Image();
+  this.enemyImage = new Image();
 }
 
-Grid.prototype.printBoard()
+Grid.prototype.configureBoard()
 Grid.prototype.getCellElement()
-Grid.prototype.removeInGrid()
+Grid.prototype.removeFromGrid()
 Grid.prototype.putInGrid()
 
+
 ###Bomb.js
-Bomb(){
-  this.posX
-  this.posY
-  this.range
-  this.timer
-  this.owner
+function Bomb (canvas, x, y) {
+
+  this.posX = x;
+  this.posY = y;
+  this.range = 4;
+  this.timer = 2500;  //milliSeconds
+  this.durationExplosion = 1000;  //milliSeconds
+  this.startTimer = Date.now();
+  this.hasExploded = false;
+  this.fireCells = [];
+  this.canvas = canvas;
+  this.ctx = this.canvas.getContext('2d');
+  this.bombImage = new Image();
+  this.fireImage = new Image();
 }
 
-Bomb.prototype.plant()
-Bomb.prototype.print()
-Bomb.prototype.delete()
-Bomb.prototype.getFireCells()
-Bomb.prototype.explode()
-Bomb.prototype.printFire()
-Bomb.prototype.deleteFire()
-
+print()
+printFire()
+checkIfExplodes()
+makeExplode()
+checkRemoveFire()
+getFireCells()
 
 
 ## States y States Transitions
 splashScreen
-Game
-GameOver
-GameWin
+GameScreen
+GameOverScreen
+GameWinScreen
 
 
 ## Task
 Splash, game and gameover pages
 Game - startLoop()
-Game - clearCanvas()
-Game - updateCanvas()
-Game - drawCanvas()
-Grid - printBoard()
+Game - DrawingBoard
+Grid - configureBoard()
 Grid - getCellElement()
-Grid - removeInGrid()
+Grid - removeFromGrid()
 Grid - putInGrid()
 Player - move()
-Player - whatsNextCell()
-Player - reduceLifes()
+Player - nextPosition()
+Player -  addBombsAvailable()
 Player - reduceBombsAvailable()
-Player - addBombsAvailable()
-Player - print()
-Bomb - plant()
+Game - Game logic to interact with player
 Bomb - print()
-Bomb - delete()
-Bomb - getFireCells()
-Bomb - explode()
 Bomb - printFire()
-Bomb - deleteFire()
-Enemy - setFirstPosition()
-Enemy - GenerateRandomMovement()
-Enemy - move(direction)
+Bomb - checkIfExplodes()
+Bomb - makeExplode()
+Bomb - checkRemoveFire()
+Bomb - getFireCells()
+Game - Game logic to interact with boms
+Enemy - canIMoveNow()
+Enemy - move()
+Enemy - NextPosition()
 Enemy - print()
-Enemy - remove()
+Enemy - kills()
+Enemy - GenerateRandomMovement()
+Game - Game logic to interact with boms
 Game - Game over
 
 
