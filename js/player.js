@@ -7,6 +7,9 @@ function Player(canvas){
   this.speed = 1;
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
+  this.bombermanImage = new Image();
+
+  this.bombermanImage.src = "./img/bomberman.gif";
 }
 
 Player.prototype.move = function(x, y){
@@ -39,9 +42,8 @@ Player.prototype.reduceBombsAvailable = function (){
 
   this.bombsAvailable--;
 }
-/*
+
 Player.prototype.print = function (canvas) {
 
-  //this.ctx.fillStyle = 'blue';
-  //this.ctx.fillRect(this.posX*32, this.posY*32, 32, 32);
-}*/
+  this.ctx.drawImage(this.bombermanImage, this.posX*32, this.posY*32, 32, 32);
+}

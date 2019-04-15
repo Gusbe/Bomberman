@@ -34,7 +34,7 @@ function main(){
     const gameScreen = buildDom(`
     <section>
       <div id="top-info">
-        <div id="lives">Lives: 3</div>
+        <div id="lifes">Lifes: 3</div>
         <img src="./img/title-small.jpg" id="title-small">
         <div id="time">Time: 125</div>
       </div>

@@ -85,6 +85,7 @@ Game.prototype.checkIfWinner = function () {
 
 Game.prototype.startLoop = function () {
 
+  this.updateScreenLifes();
   this.grid = new Grid(this.canvas);
   this.grid.configureBoard();
 
@@ -219,7 +220,7 @@ Game.prototype.updateCanvas = function () {
     enemy.print();
   });
   
-  //this.player.print();
+  this.player.print();
 }
 
 Game.prototype.updateScreenCounters = function (numberOfBombs){
@@ -231,9 +232,20 @@ Game.prototype.updateScreenCounters = function (numberOfBombs){
     bombsScreen = bombsScreen + `<img src="./img/bomb.png" id="bombsScreen">`;
   }
   bombsInfo.innerHTML = bombsScreen;
-  console.log(bombsInfo);
   timeInfo.innerHTML = "Time: " + this.timeUp();
 }
+
+Game.prototype.updateScreenLifes = function (){
+  let lifes = document.getElementById('lifes');
+  
+  let lifesScreen = "";
+  for (let i = 0 ; i < this.credits ; i ++){
+    lifesScreen = lifesScreen + `<img src="./img/bomberman.gif" id="bombsScreen">`;
+  }
+  lifes.innerHTML = lifesScreen;
+}
+
+
 
 Game.prototype.timeUp = function (){
 
