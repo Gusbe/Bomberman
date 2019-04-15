@@ -3,7 +3,7 @@
 function Enemy(canvas, initX, initY){
   this.posX = initX;
   this.posY = initY;
-  this.speed = 750; //milliSeconds by square;
+  this.speed = 550; //milliSeconds by square;
   this.lastMove = Date.now();
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');

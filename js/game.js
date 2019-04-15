@@ -92,7 +92,6 @@ Game.prototype.startLoop = function () {
   this.enemies.push(new Enemy(this.canvas,8,3));
   this.enemies.push(new Enemy(this.canvas,10,5));
   this.enemies.push(new Enemy(this.canvas,12,7));
-  
 
 
   const loop = () => {
@@ -102,6 +101,9 @@ Game.prototype.startLoop = function () {
     this.grid.printBoard(); //Print board in the canvas
     this.updateCanvas();  //Prints elements in the canvas
     this.checkIfWinner();
+    this.updateBombsAvailable(this.player.bombsAvailable);
+    
+    
 
     this.moveEnemies(this.grid);
 
@@ -213,6 +215,17 @@ Game.prototype.updateCanvas = function () {
   });
   
   //this.player.print();
+}
+
+Game.prototype.updateBombsAvailable = function (numberOfBombs){
+  let bombsInfo = document.getElementById('bombs');
+  
+  let bombsScreen = "";
+  for (let i = 0 ; i < numberOfBombs ; i ++){
+    bombsScreen = bombsScreen + `<img src="./img/bomb.png" id="bombsScreen">`;
+  }
+  
+  bombsInfo.innerHTML = bombsScreen;
 }
 
 Game.prototype.setGameOverCallBack = function(buildGameOverScreen){  //To have access on fucntion in another files

@@ -18,7 +18,7 @@ body {
 
 
 main {
-  display:flex;
+  display: flex;
   justify-content: center;
   flex-direction: column;
   
@@ -26,23 +26,27 @@ main {
 
 canvas {
   background-image: url("/img/ground.png");
-  width: 480px;
-  height: 352px;
+  width: 672px;
+  height: 416px;
 }
 
 section {
-  display:flex;
+  display: flex;
   justify-content: center;
-  flex-direction: column;
-
-  width: 800px;
-  
+  flex-direction: column;  
+  padding-bottom: 40px;
 }
 
 #title {
   
   width:700px;
   height: auto;
+  margin: 0 auto;
+}
+
+#title-small{
+  width: auto;
+  height: 70px;
 }
 
 audio {
@@ -66,4 +70,20 @@ audio {
 
 #instructions {
   font-size: 14px;
+}
+
+#top-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: flex-end;
+}
+
+#bombs {
+  margin-top: 20px;
+}
+
+#bombsScreen{
+  height: 32px;
+  width: 32px; 
 }
