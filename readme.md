@@ -18,6 +18,7 @@ Two players game
 ## Data structure
 
 ###Game.js
+```
 function Game(canvas, initCredits) {
   this.grid = null;
   this.player = null;
@@ -42,7 +43,7 @@ updateCanvas()
 setGameOverCallBack() 
 setGameOverWithLifesCallBack()
 setWinnerCallBack()
-
+```
 
 
 
