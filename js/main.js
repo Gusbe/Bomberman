@@ -22,7 +22,7 @@ function main(){
       <p  id="instructions">Move the player with the arrows. Put a bomb with the space bar.</p>
       <p  id="instructions">Destroy all the enemies before the times up. Don't explode yourself :)</p>
 
-      <audio src="/sound/title.mp3" controls autoplay loop>
+      <audio src="./sound/title.mp3" controls autoplay loop>
     </section>`);
     const startButton = document.querySelector('#play');
     startButton.addEventListener('click', buildGameScreen);
@@ -40,7 +40,7 @@ function main(){
       </div>
       <canvas class="game-container"></canvas>
       <div id="bombs">Bombs: 2</div>
-      <audio src="/sound/game.mp3" controls autoplay>
+      <audio src="./sound/game.mp3" controls autoplay>
     </section>
     `);
     
