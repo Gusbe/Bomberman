@@ -89,7 +89,7 @@ function main(){
     <section>
       <h1>Game Over :(</h1>
       <button class="restart-button">Restart?</button>
-      <audio src="/sound/gameover.mp3" controls autoplay loop>
+      <audio src="./sound/gameover.mp3" controls autoplay loop>
     </section>
     `);
 
@@ -102,7 +102,7 @@ function main(){
     buildDom(`
     <section>
       <h1>Game Over. But you can still playing! :)</h1>
-      <button class="restart-button">Restart?</button><audio src="/sound/gameover.mp3" controls autoplay>
+      <button class="restart-button">Restart?</button><audio src="./sound/gameover.mp3" controls autoplay>
     </section>
     `);
     const restartButton = document.querySelector('.restart-button');
@@ -115,7 +115,7 @@ function main(){
     <section>
       <h1>You win!</h1>
       <button class="restart-button">Restart?</button>
-      <audio src="/sound/complete.mp3" controls autoplay>
+      <audio src="./sound/complete.mp3" controls autoplay>
     </section>`);
     const restartButton = document.querySelector('.restart-button');
     restartButton.addEventListener('click',buildGameScreen);
