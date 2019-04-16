@@ -11,7 +11,7 @@ function Game(canvas, initCredits) {
   this.gameOver = false;
   this.winner = false;
   this.timeStart = Date.now();
-  this.timer = 100; //Seconds
+  this.timer = 10; //Seconds
 }
 
 Game.prototype.movePlayer = function (direction) {
@@ -108,7 +108,7 @@ Game.prototype.startLoop = function () {
 
       this.updateScreenCounters(this.player.bombsAvailable);
     }
-    if (this.timeUp() === 0) this.dead();
+    if (this.timeUp() <= 0) this.dead();
     
     
 
