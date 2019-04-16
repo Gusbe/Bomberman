@@ -123,8 +123,13 @@ Game.prototype.startLoop = function () {
       if(this.bombs[i].checkRemoveFire()){
         
         for(let j = 0 ; j < this.bombs[i].fireCells.length ; j++){
+          if( this.grid.getCellElement(this.bombs[i].fireCells[j][0], this.bombs[i].fireCells[j][1]) !== 'R'
+              && this.grid.getCellElement(this.bombs[i].fireCells[j][0], this.bombs[i].fireCells[j][1]) !== 'A'
+              && this.grid.getCellElement(this.bombs[i].fireCells[j][0], this.bombs[i].fireCells[j][1]) !== 'L'
+              && this.grid.getCellElement(this.bombs[i].fireCells[j][0], this.bombs[i].fireCells[j][1]) !== 'D'){
 
-          this.grid.putInGrid('X', this.bombs[i].fireCells[j][0],  this.bombs[i].fireCells[j][1]);
+                this.grid.putInGrid('X', this.bombs[i].fireCells[j][0],  this.bombs[i].fireCells[j][1]);
+          }
         }
         this.bombs.splice(i, 1);
       }
@@ -165,6 +170,7 @@ Game.prototype.explosion = function (bomb) {
   
   let fireCells = bomb.getFireCells(this.grid);
   let playerDead = false;
+  let arrayPowerUps = [];
   for(let i = 0 ; i < fireCells.length ; i++){
   
     switch (this.grid.getCellElement(fireCells[i][0],fireCells[i][1])){
@@ -174,12 +180,15 @@ Game.prototype.explosion = function (bomb) {
                 break;
 
       case 'S': //Breaks the wall & generate the powerUp
-                let powerUp = this.Grid.roulettePowerUp();
+
+                let powerUp = this.grid.roulettePowerUp();
+                
                 if(!powerUp){
                   this.grid.putInGrid('X', fireCells[i][0], fireCells[i][1]);
                 }
                 else{
-                  this.grid.putInGrid(powerUP, fireCells[i][0], fireCells[i][1]);
+                  arrayPowerUps.push([powerUp,fireCells[i][0], fireCells[i][1]]);
+                  console.log(arrayPowerUps);
                 }
                 break;
 
@@ -202,6 +211,11 @@ Game.prototype.explosion = function (bomb) {
     }
 
     this.grid.putInGrid('F', fireCells[i][0], fireCells[i][1]); //Put fire in the grid
+
+    for(let k = 0 ; k < arrayPowerUps.length ; k++){
+
+      this.grid.putInGrid(...arrayPowerUps[k]);
+    }
   }
 
   if(playerDead){

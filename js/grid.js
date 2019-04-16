@@ -73,7 +73,9 @@ Grid.prototype.removeFromGrid = function (x, y){
 
 
 Grid.prototype.putInGrid = function (element, x, y){
-
+  console.log("element:"+element);
+  console.log("X:"+x);
+  console.log("Y:"+y);
   this.board[x][y] = element;
 }
 
@@ -136,7 +138,7 @@ Grid.prototype.printElement = function(element, x, y){
     case 'D': 
               this.ctx.drawImage(this.powerupDeath, y*32, x*32, 32, 32);
               break;
-                    
+
  }
   
 }
