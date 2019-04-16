@@ -173,8 +173,14 @@ Game.prototype.explosion = function (bomb) {
                 playerDead = true;
                 break;
 
-      case 'S': //Breaks the wall
-                this.grid.putInGrid('X', fireCells[i][0], fireCells[i][1]);
+      case 'S': //Breaks the wall & generate the powerUp
+                let powerUp = this.Grid.roulettePowerUp();
+                if(!powerUp){
+                  this.grid.putInGrid('X', fireCells[i][0], fireCells[i][1]);
+                }
+                else{
+                  this.grid.putInGrid(powerUP, fireCells[i][0], fireCells[i][1]);
+                }
                 break;
 
       case 'E': //Kills the enemy

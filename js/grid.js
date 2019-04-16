@@ -5,7 +5,7 @@ function Grid(canvas){
   this.board = [[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
-  this.powerUps = ['R','R','R','B','B','B','S','D'];
+  this.powerUps = ['R','R','R','A','A','A','L','D'];  //R:Bomb range A:Bombs amount L:Slow enemies D:Death 
   this.wallImage = new Image();
   this.woodImage = new Image();
   this.groundImage = new Image();
@@ -13,6 +13,10 @@ function Grid(canvas){
   this.bombImage = new Image();
   this.fireImage = new Image();
   this.enemyImage = new Image();
+  this.powerupRange = new Image();
+  this.powerupBombs = new Image();
+  this.powerupSlow = new Image();
+  this.powerupDeath = new Image();
   
   this.wallImage.src = "./img/wall.png";
   this.woodImage.src = "./img/wood.png";
@@ -21,6 +25,11 @@ function Grid(canvas){
   this.bombImage.src = "./img/bomb.png";
   this.fireImage.src = "./img/fire.png";
   this.enemyImage.src = "./img/enemy.png";
+
+  this.powerupRange.src = "./img/powerup-range.jpg";
+  this.powerupBombs.src = "./img/powerup-bombs.jpg";
+  this.powerupSlow.src = "./img/powerup-slow.jpg";
+  this.powerupDeath.src = "./img/powerup-death.jpg";
 }
 
 
@@ -84,28 +93,50 @@ Grid.prototype.printElement = function(element, x, y){
 
  switch (element){
 
-   case 'W':  
+    case 'W':  
               this.ctx.drawImage(this.wallImage, y*32, x*32, 32, 32);
               break;
 
-   case 'X':  this.ctx.drawImage(this.groundImage, y*32, x*32, 32, 32);
-             break;
-
-   case 'S': this.ctx.drawImage(this.woodImage, y*32, x*32, 32, 32);
-             break;
-
-   case 'P': this.ctx.drawImage(this.bombermanImage, y*32, x*32, 32, 32);
-             break;
-
-    case 'B': this.ctx.drawImage(this.bombImage, y*32, x*32, 32, 32);
+    case 'X':
+              this.ctx.drawImage(this.groundImage, y*32, x*32, 32, 32);
               break;
 
-   case 'F': 
-            this.ctx.drawImage(this.fireImage, y*32, x*32, 32, 32);
-             break;
+    case 'S':
+              this.ctx.drawImage(this.woodImage, y*32, x*32, 32, 32);
+              break;
+
+    case 'P':
+              this.ctx.drawImage(this.bombermanImage, y*32, x*32, 32, 32);
+              break;
+
+    case 'B':
+              this.ctx.drawImage(this.bombImage, y*32, x*32, 32, 32);
+              break;
+
+    case 'F': 
+              this.ctx.drawImage(this.fireImage, y*32, x*32, 32, 32);
+              break;
+
     case 'E': 
-            this.ctx.drawImage(this.enemyImage, y*32, x*32, 32, 32);
-            break;
+              this.ctx.drawImage(this.enemyImage, y*32, x*32, 32, 32);
+              break;
+
+    case 'R':
+              this.ctx.drawImage(this.powerupRange, y*32, x*32, 32, 32);
+              break;
+
+    case 'A':
+              this.ctx.drawImage(this.powerupBombs, y*32, x*32, 32, 32);
+              break;
+
+    case 'L': 
+              this.ctx.drawImage(this.powerupSlow, y*32, x*32, 32, 32);
+              break;
+
+    case 'D': 
+              this.ctx.drawImage(this.powerupDeath, y*32, x*32, 32, 32);
+              break;
+                    
  }
   
 }
@@ -136,7 +167,7 @@ Grid.prototype.roulettePowerUp = function () {
       let index = Math.floor(Math.random()*this.powerUps.length);
       let power = this.powerUps[index];
       this.powerUps.splice(index,1);
-      
+
       return power;
     }
     return false;
