@@ -143,7 +143,7 @@ Game.prototype.startLoop = function () {
     }
     else if(this.credits > 0){
     
-      setTimeout(this.buildGameOverWithLifesScreen,2000);
+      setTimeout(this.buildGameOverWithLifesScreen(5),2000);
     }
     else if(this.credits === 0){
       

@@ -63,10 +63,10 @@ Enemy.prototype.GenerateRandomMovement = function (grid) {
 
   //Erratic movement for the moment
   let options = [];
-  if(grid.getCellElement(this.posX,this.posY-1) !== 'S' && grid.getCellElement(this.posX,this.posY-1) !== 'W' && grid.getCellElement(this.posX,this.posY-1) !== 'B'){ options.push('U'); }
-  if(grid.getCellElement(this.posX+1,this.posY) !== 'S' && grid.getCellElement(this.posX+1,this.posY) !== 'W' && grid.getCellElement(this.posX+1,this.posY) !== 'B'){ options.push('R'); }
-  if(grid.getCellElement(this.posX,this.posY+1) !== 'S' && grid.getCellElement(this.posX,this.posY+1) !== 'W' && grid.getCellElement(this.posX,this.posY+1) !== 'B'){ options.push('D'); }
-  if(grid.getCellElement(this.posX-1,this.posY) !== 'S' && grid.getCellElement(this.posX-1,this.posY) !== 'W' && grid.getCellElement(this.posX-1,this.posY) !== 'B'){ options.push('L'); }
+  if(grid.getCellElement(this.posX,this.posY-1) !== 'S' && grid.getCellElement(this.posX,this.posY-1) !== 'W' && grid.getCellElement(this.posX,this.posY-1) !== 'B' && grid.getCellElement(this.posX,this.posY-1) !== 'E'){ options.push('U'); }
+  if(grid.getCellElement(this.posX+1,this.posY) !== 'S' && grid.getCellElement(this.posX+1,this.posY) !== 'W' && grid.getCellElement(this.posX+1,this.posY) !== 'B' && grid.getCellElement(this.posX+1,this.posY) !== 'E'){ options.push('R'); }
+  if(grid.getCellElement(this.posX,this.posY+1) !== 'S' && grid.getCellElement(this.posX,this.posY+1) !== 'W' && grid.getCellElement(this.posX,this.posY+1) !== 'B' && grid.getCellElement(this.posX,this.posY+1) !== 'E'){ options.push('D'); }
+  if(grid.getCellElement(this.posX-1,this.posY) !== 'S' && grid.getCellElement(this.posX-1,this.posY) !== 'W' && grid.getCellElement(this.posX-1,this.posY) !== 'B' && grid.getCellElement(this.posX-1,this.posY) !== 'E'){ options.push('L'); }
 
   let nextCoordinates = [];
   nextCoordinates = this.NextPosition(options[Math.floor(Math.random()*options.length)]);
