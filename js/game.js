@@ -11,7 +11,7 @@ function Game(canvas, initCredits) {
   this.gameOver = false;
   this.winner = false;
   this.timeStart = Date.now();
-  this.timer = 10; //Seconds
+  this.timer = 100; //Seconds
 }
 
 Game.prototype.movePlayer = function (direction) {

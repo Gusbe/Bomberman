@@ -69,7 +69,7 @@ function main(){
       
       switch(event.keyCode){
         
-        case 16: game.plantBomb(); break; //shift right key
+        //case 16: game.plantBomb(); break; //shift right key
         case 32: game.plantBomb(); break; //Space key
         case 37: game.movePlayer('L'); break; //Left key
         case 38: game.movePlayer('U');  break; //Up key
