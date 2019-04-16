@@ -110,7 +110,6 @@ Game.prototype.startLoop = function () {
     }
     if (this.timeUp() <= 0) this.dead();
     
-    
 
     this.moveEnemies(this.grid);
 

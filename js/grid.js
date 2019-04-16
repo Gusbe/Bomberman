@@ -5,10 +5,7 @@ function Grid(canvas){
   this.board = [[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
-  this.powerRange = 3;
-  this.powerAmount = 3;
-  this.powerDead = 1;
-  this.powerSlow = 1;
+  this.powerUps = ['R','R','R','B','B','B','S','D'];
   this.wallImage = new Image();
   this.woodImage = new Image();
   this.groundImage = new Image();
@@ -124,4 +121,25 @@ Grid.prototype.countWood = function () {
     }
   }
   return count;
+}
+
+
+Grid.prototype.roulettePowerUp = function () {
+
+  let numWoods = this.countWood();
+
+  if(numWoods !== 0){
+
+    let possibilities = this.powerUps.length/numWoods;
+    if(Math.random() < possibilities){
+
+      let index = Math.floor(Math.random()*this.powerUps.length);
+      let power = this.powerUps[index];
+      this.powerUps.splice(index,1);
+      
+      return power;
+    }
+    return false;
+  }
+
 }
