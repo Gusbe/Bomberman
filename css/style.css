@@ -63,6 +63,7 @@ audio {
 #play:hover {
   color: orange;
 }
+
 #instructions-title {
   font-size: 20px;
   margin-top: 50px;
@@ -86,4 +87,8 @@ audio {
 #bombsScreen{
   height: 32px;
   width: 32px; 
+}
+
+#have-lifes{
+  margin: 100px;
 }
