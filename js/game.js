@@ -70,6 +70,7 @@ Game.prototype.moveEnemies = function (grid) {
 }
 
 Game.prototype.dead = function (causeOfDeath) {
+
   this.player.printDead(causeOfDeath);
   this.credits--;
   this.gameOver = true;
@@ -101,10 +102,12 @@ Game.prototype.startLoop = function () {
 
   const loop = () => {
     
-    
-    this.refreshScreen();
-    this.checkIfWinner();
-    this.updateScreenCounters(this.player.bombsAvailable);
+    if(!this.gameOver){
+      this.refreshScreen();
+      this.checkIfWinner();
+
+      this.updateScreenCounters(this.player.bombsAvailable);
+    }
     if (this.timeUp() === 0) this.dead();
     
     
@@ -131,7 +134,7 @@ Game.prototype.startLoop = function () {
 
 
 
-
+    
   
     if(!this.gameOver && !this.winner) {
 
@@ -142,7 +145,7 @@ Game.prototype.startLoop = function () {
       setTimeout(this.buildWinnerScreen,2000);
     }
     else if(this.credits > 0){
-    
+      
       setTimeout(this.buildGameOverWithLifesScreen,2000);
     }
     else if(this.credits === 0){

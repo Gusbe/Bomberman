@@ -15,7 +15,7 @@ function Bomb (canvas, x, y) {
   this.bombImage = new Image();
   this.bombImage.src = "./img/bomb.png";
   this.fireImage = new Image();
-  this.fireImage.src = "./img/fire.jpg";
+  this.fireImage.src = "./img/fire.png";
 }
 
 Bomb.prototype.print = function () {
