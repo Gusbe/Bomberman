@@ -12,7 +12,7 @@ function main(){
   }
 
 
-  function buildSplashScreen(lifes){
+  function buildSplashScreen(){
 
     buildDom(`
     <section>
@@ -25,11 +25,11 @@ function main(){
       <audio src="/sound/title.mp3" controls autoplay loop>
     </section>`);
     const startButton = document.querySelector('#play');
-    startButton.addEventListener('click', function() { buildGameScreen(lifes); } );
+    startButton.addEventListener('click', buildGameScreen);
   }
 
 
-  function buildGameScreen(lifes){
+  function buildGameScreen(){
 
     const gameScreen = buildDom(`
     <section>
@@ -57,7 +57,7 @@ function main(){
 
     //Here starts the game
 
-    const game = new Game(canvasElement,lifes);
+    const game = new Game(canvasElement,3);
     game.startLoop();
     game.setGameOverCallBack(buildGameOverScreen);
     game.setGameOverWithLifesCallBack(buildGameOverWithLifesScreen);
@@ -87,7 +87,6 @@ function main(){
 
     buildDom(`
     <section>
-      <img src="./img/bomb-killed.png>
       <h1>Game Over :(</h1>
       <button class="restart-button">Restart?</button>
       <audio src="/sound/gameover.mp3" controls autoplay loop>
@@ -102,14 +101,12 @@ function main(){
     
     buildDom(`
     <section>
-      <h1>Oh no! You are dead.</h1>
-      <p id="have-lifes">...but you can still playing! :)</p>
-      <a id="play" href="#">PLAY GAME</a>
-      <audio src="/sound/gameover.mp3" controls autoplay>
+      <h1>Game Over. But you can still playing! :)</h1>
+      <button class="restart-button">Restart?</button><audio src="/sound/gameover.mp3" controls autoplay>
     </section>
     `);
-    const startButton = document.querySelector('#play');
-    startButton.addEventListener('click', buildGameScreen);
+    const restartButton = document.querySelector('.restart-button');
+    restartButton.addEventListener('click',buildGameScreen);
   }
 
   function buildWinnerScreen(){
@@ -124,7 +121,7 @@ function main(){
     restartButton.addEventListener('click',buildGameScreen);
   }
 
-  buildSplashScreen(3); //initial lifes
+  buildSplashScreen();
 }
 
 window.addEventListener('load', main());
