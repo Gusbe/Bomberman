@@ -5,6 +5,10 @@ function Grid(canvas){
   this.board = [[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
+  this.powerRange = 3;
+  this.powerAmount = 3;
+  this.powerDead = 1;
+  this.powerSlow = 1;
   this.wallImage = new Image();
   this.woodImage = new Image();
   this.groundImage = new Image();
@@ -81,26 +85,6 @@ Grid.prototype.printBoard = function (){
 
 Grid.prototype.printElement = function(element, x, y){
 
-  /*
-  let color = '';
-  switch (element){
-    case 'W': color = 'grey';
-              break;
-    case 'X': color = 'green';
-              break;
-    case 'S': color = 'brown';
-              break;
-    case 'P': color = 'blue';
-              break;
-    case 'F': color = 'orange';
-              break;
-  }
-
-  this.ctx.fillStyle = color;
-  this.ctx.fillRect(y*50, x*50, 50, 50);
-  */
-
- let color = '';
  switch (element){
 
    case 'W':  
