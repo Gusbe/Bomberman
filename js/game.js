@@ -49,6 +49,7 @@ Game.prototype.movePlayer = function (direction) {
               this.player.addBombsAvailable();
               break;
     case 'L': 
+              this.sounds.play('speed');
               this.grid.putInGrid('X',this.player.posX,this.player.posY);
               this.player.move(nextCoordinates[0],nextCoordinates[1]);
               this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
@@ -197,11 +198,11 @@ Game.prototype.startLoop = function () {
       setTimeout(this.buildWinnerScreen,2000);
     }
     else if(this.credits > 0){
-      
+      this.sounds.play('dead');
       setTimeout(this.buildGameOverWithLifesScreen,2000);
     }
     else if(this.credits === 0){
-      
+      this.sounds.play('dead');
       setTimeout(this.buildGameOverScreen,2000);
     }
     
