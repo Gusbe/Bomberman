@@ -37,7 +37,12 @@ Game.prototype.movePlayer = function (direction) {
               this.refreshScreen();
               this.player.addBombsRange();
 
-    case 'A': break; //
+    case 'A':
+              this.grid.putInGrid('X',this.player.posX,this.player.posY);
+              this.player.move(nextCoordinates[0],nextCoordinates[1]);
+              this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
+              this.refreshScreen();
+              this.player.addBombsAvailable();
     case 'L': break; //
     case 'D': //Death
               this.grid.putInGrid('X',this.player.posX,this.player.posY);

@@ -44,7 +44,7 @@ Player.prototype.addBombsAvailable = function (){
   this.bombsAvailable++;
 }
 
-Player.prototype.reduceBombsAvailable = function (){
+Player.prototype.reduceBombsAvailable = function (){    //TODO: REMOVE IT?
 
   this.bombsAvailable--;
 }
