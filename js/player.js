@@ -3,8 +3,8 @@
 function Player(canvas){
   this.posX = 1;
   this.posY = 1;
-  this.bombsAvailable = 4;
-  this.rangeBombs = 2;
+  this.bombsAvailable = 1;
+  this.rangeBombs = 3;
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
   this.bombermanImage = new Image();
