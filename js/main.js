@@ -102,7 +102,8 @@ function main(){
     buildDom(`
     <section>
       <h1>Game Over. But you can still playing! :)</h1>
-      <button class="restart-button">Restart?</button><audio src="./sound/gameover.mp3" controls autoplay>
+      <button class="restart-button">Restart?</button>
+      <audio src="./sound/gameover.mp3" controls autoplay>
     </section>
     `);
     const restartButton = document.querySelector('.restart-button');

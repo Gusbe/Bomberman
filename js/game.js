@@ -30,6 +30,15 @@ Game.prototype.movePlayer = function (direction) {
     case 'W': break; //nothing
     case 'B': break; //nothing
     case 'S': break; //nothing
+    case 'R': break; //
+    case 'A': break; //
+    case 'L': break; //
+    case 'D': //Death
+              this.grid.putInGrid('X',this.player.posX,this.player.posY);
+              this.player.move(nextCoordinates[0],nextCoordinates[1]);
+              this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
+              this.refreshScreen();
+              this.dead(); break; 
     case 'E': this.dead(); break;
     case 'F': this.dead(); break;
     
