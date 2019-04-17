@@ -38,8 +38,15 @@ Game.prototype.movePlayer = function (direction) {
               this.player.move(nextCoordinates[0],nextCoordinates[1]);
               this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
               this.refreshScreen();
-              this.dead(); break; 
-    case 'E': this.dead(); break;
+              this.dead();
+              break; 
+    case 'E': //Enemy
+              this.grid.putInGrid('X',this.player.posX,this.player.posY);
+              this.player.move(nextCoordinates[0],nextCoordinates[1]);
+              this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
+              this.refreshScreen();
+              this.dead();
+              break; 
     case 'F': this.dead(); break;
     
   }
