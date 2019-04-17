@@ -16,6 +16,8 @@ function Bomb (canvas, x, y, range) {
   this.bombImage.src = "./img/bomb.png";
   this.fireImage = new Image();
   this.fireImage.src = "./img/fire.png";
+  this.bombSound = document.createElement("audio");
+  this.bombSound.src = ("../sound/sound-bomb.mp3");
 }
 
 Bomb.prototype.print = function () {
@@ -127,9 +129,8 @@ Bomb.prototype.getFireCells = function (grid){
   return this.fireCells;
 } 
 
-/*
-Bomb.prototype.delete()
-Bomb.prototype.getFireCells()
-Bomb.prototype.explode()
-Bomb.prototype.printFire()
-*/
+Bomb.prototype.sound = function () {
+
+  this.bombSound.play();
+  this.bombSound.volume = 0.7;
+}

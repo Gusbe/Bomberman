@@ -212,6 +212,7 @@ Game.prototype.startLoop = function () {
 
 Game.prototype.explosion = function (bomb) {
   
+  bomb.sound();
   let fireCells = bomb.getFireCells(this.grid);
   let playerDead = false;
   let arrayPowerUps = [];
