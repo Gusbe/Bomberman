@@ -6,7 +6,7 @@ function Grid(canvas){
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
   //this.powerUps = ['R','R','R','A','A','A','L','D'];  //R:Bomb range A:Bombs amount L:Slow enemies D:Death 
-  this.powerUps = ['A','A','A','A','A','A','A','A','A','A','A','A'];  //R:Bomb range A:Bombs amount L:Slow enemies D:Death 
+  this.powerUps = ['L','L','L','L','L','L','L','L','L','L','L','L','L'];  //R:Bomb range A:Bombs amount L:Slow enemies D:Death 
   this.wallImage = new Image();
   this.woodImage = new Image();
   this.groundImage = new Image();
@@ -74,9 +74,7 @@ Grid.prototype.removeFromGrid = function (x, y){
 
 
 Grid.prototype.putInGrid = function (element, x, y){
-  console.log("element:"+element);
-  console.log("X:"+x);
-  console.log("Y:"+y);
+  
   this.board[x][y] = element;
 }
 

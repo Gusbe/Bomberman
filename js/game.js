@@ -36,6 +36,7 @@ Game.prototype.movePlayer = function (direction) {
               this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
               this.refreshScreen();
               this.player.addBombsRange();
+              break;
 
     case 'A':
               this.grid.putInGrid('X',this.player.posX,this.player.posY);
@@ -43,7 +44,15 @@ Game.prototype.movePlayer = function (direction) {
               this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
               this.refreshScreen();
               this.player.addBombsAvailable();
-    case 'L': break; //
+              break;
+    case 'L': 
+              this.grid.putInGrid('X',this.player.posX,this.player.posY);
+              this.player.move(nextCoordinates[0],nextCoordinates[1]);
+              this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
+              this.refreshScreen();
+              this.incrementSpeedEnemies();
+              break;
+
     case 'D': //Death
               this.grid.putInGrid('X',this.player.posX,this.player.posY);
               this.player.move(nextCoordinates[0],nextCoordinates[1]);
@@ -69,6 +78,14 @@ Game.prototype.plantBomb = function () {
     this.player.bombsAvailable--;
     this.bombs.push(new Bomb(this.canvas,this.player.posX,this.player.posY,this.player.rangeBombs));
     this.grid.putInGrid('B',this.player.posX,this.player.posY);
+  }
+}
+
+Game.prototype.incrementSpeedEnemies = function () {
+
+  for(let i = 0 ; i < this.enemies.length ; i++){
+  
+    this.enemies[i].incrementSpeed();
   }
 }
 
@@ -215,7 +232,6 @@ Game.prototype.explosion = function (bomb) {
                 }
                 else{
                   arrayPowerUps.push([powerUp,fireCells[i][0], fireCells[i][1]]);
-                  console.log(arrayPowerUps);
                 }
                 break;
 

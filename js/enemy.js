@@ -43,6 +43,11 @@ Enemy.prototype.NextPosition = function(direction) {
   return [nextPositionX , nextPositionY];
 }
 
+Enemy.prototype.incrementSpeed = function () {
+
+  this.speed -= 100;
+}
+
 Enemy.prototype.print = function () {
 
   this.ctx.drawImage(this.enemyImage, this.posX*32, this.posY*32, 32, 32);
