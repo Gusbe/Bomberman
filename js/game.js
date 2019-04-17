@@ -32,6 +32,7 @@ Game.prototype.movePlayer = function (direction) {
     case 'B': break; //nothing
     case 'S': break; //nothing
     case 'R': 
+              this.sounds.play('powerUp');          
               this.grid.putInGrid('X',this.player.posX,this.player.posY);
               this.player.move(nextCoordinates[0],nextCoordinates[1]);
               this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
@@ -40,6 +41,7 @@ Game.prototype.movePlayer = function (direction) {
               break;
 
     case 'A':
+              this.sounds.play('powerUp');
               this.grid.putInGrid('X',this.player.posX,this.player.posY);
               this.player.move(nextCoordinates[0],nextCoordinates[1]);
               this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
