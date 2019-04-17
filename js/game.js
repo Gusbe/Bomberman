@@ -12,6 +12,7 @@ function Game(canvas, initCredits) {
   this.winner = false;
   this.timeStart = Date.now();
   this.timer = 100; //Seconds
+  this.sounds = new Sounds();
 }
 
 Game.prototype.movePlayer = function (direction) {
@@ -130,6 +131,7 @@ Game.prototype.checkIfWinner = function () {
 
 Game.prototype.startLoop = function () {
 
+  
   this.updateScreenLifes();
   this.grid = new Grid(this.canvas);
   this.grid.configureBoard();
@@ -212,7 +214,7 @@ Game.prototype.startLoop = function () {
 
 Game.prototype.explosion = function (bomb) {
   
-  bomb.sound();
+  this.sounds.play('explosion');
   let fireCells = bomb.getFireCells(this.grid);
   let playerDead = false;
   let arrayPowerUps = [];
