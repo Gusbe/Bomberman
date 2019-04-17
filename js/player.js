@@ -3,7 +3,7 @@
 function Player(canvas){
   this.posX = 1;
   this.posY = 1;
-  this.bombsAvailable = 1;
+  this.bombsAvailable = 2;
   this.rangeBombs = 3;
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
