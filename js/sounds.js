@@ -11,6 +11,11 @@ function Sounds(){
 
   this.speed =  document.createElement("audio");
   this.speed.src = ("../sound/sound-speed.wav");
+
+  this.enemyDies =  document.createElement("audio");
+  this.enemyDies.src = ("../sound/sound-enemyDies.mp3");
+
+  
 }
 
 Sounds.prototype.play = function (event){
@@ -23,7 +28,9 @@ Sounds.prototype.play = function (event){
                       break;
     case 'dead':      this.dead.play();
                       break;
-    case 'speed':      this.speed.play();
+    case 'speed':     this.speed.play();
+                      break;
+    case 'enemyDies': this.enemyDies.play();
                       break;
   }   
 }

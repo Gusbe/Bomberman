@@ -36,25 +36,25 @@ function Grid(canvas){
 Grid.prototype.configureBoard = function (){
 
   this.board[0] = ['W','W','W','W','W','W','W','W','W','W','W','W','W'];
-  this.board[1] = ['W','P','X','S','X','X','X','X','S','X','X','X','W'];
+  this.board[1] = ['W','P','X','X','X','X','X','X','S','X','X','X','W'];
   this.board[2] = ['W','X','W','X','W','X','W','X','W','S','W','X','W'];
   this.board[3] = ['W','S','X','X','X','X','X','S','X','X','X','X','W'];
   this.board[4] = ['W','X','W','X','W','X','W','S','W','X','W','X','W'];
   this.board[5] = ['W','S','X','S','X','X','X','S','X','S','X','X','W'];
   this.board[6] = ['W','X','W','X','W','X','W','X','W','X','W','X','W'];
-  this.board[7] = ['W','X','X','X','X','S','X','X','X','X','X','X','W'];
+  this.board[7] = ['W','X','X','X','X','S','X','X','X','X','X','S','W'];
   this.board[8] = ['W','X','W','X','W','X','W','X','W','X','W','X','W'];
   this.board[9] = ['W','X','S','X','X','X','X','X','X','S','X','X','W'];
   this.board[10] = ['W','X','W','X','W','S','W','X','W','X','W','X','W'];
-  this.board[11] = ['W','S','X','S','X','S','X','X','X','X','X','X','W'];
-  this.board[12] = ['W','X','W','S','W','S','W','S','W','S','W','X','W'];
+  this.board[11] = ['W','S','X','S','X','X','X','X','X','X','X','X','W'];
+  this.board[12] = ['W','X','W','X','W','S','W','S','W','S','W','S','W'];
   this.board[13] = ['W','X','S','X','S','X','X','S','X','S','X','X','W'];
-  this.board[14] = ['W','X','W','S','W','S','W','S','W','S','W','X','W'];
-  this.board[15] = ['W','X','S','X','S','X','X','S','X','S','X','X','W'];
-  this.board[16] = ['W','X','W','S','W','S','W','S','W','S','W','X','W'];
-  this.board[17] = ['W','X','S','X','S','X','X','S','X','S','X','X','W'];
-  this.board[18] = ['W','X','W','S','W','S','W','S','W','S','W','X','W'];
-  this.board[19] = ['W','X','S','X','S','X','X','S','X','S','X','X','W'];
+  this.board[14] = ['W','X','W','S','W','X','W','X','W','X','W','X','W'];
+  this.board[15] = ['W','X','S','X','X','X','X','X','X','X','X','S','W'];
+  this.board[16] = ['W','X','W','S','W','X','W','X','W','X','W','X','W'];
+  this.board[17] = ['W','X','X','X','S','X','X','S','X','S','X','X','W'];
+  this.board[18] = ['W','X','W','X','W','S','W','X','W','S','W','X','W'];
+  this.board[19] = ['W','X','S','X','S','X','X','S','X','X','X','X','W'];
   this.board[20] = ['W','W','W','W','W','W','W','W','W','W','W','W','W'];
   
 }

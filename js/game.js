@@ -103,7 +103,7 @@ Game.prototype.moveEnemies = function (grid) {
       this.enemies[i].GenerateRandomMovement(grid);
     
       if(this.grid.getCellElement(this.enemies[i].posX,this.enemies[i].posY) === 'F'){
-  
+        this.sounds.play('dead');
         this.enemies.splice(i,1);
       }
       else if(this.enemies[i].kills(this.player.posX, this.player.posY)){
@@ -141,10 +141,11 @@ Game.prototype.startLoop = function () {
 
   this.player = new Player(this.canvas);
 
-  this.enemies.push(new Enemy(this.canvas,7,8));
-  this.enemies.push(new Enemy(this.canvas,8,3));
-  this.enemies.push(new Enemy(this.canvas,10,5));
-  this.enemies.push(new Enemy(this.canvas,12,7));
+  this.enemies.push(new Enemy(this.canvas,18,1));
+  this.enemies.push(new Enemy(this.canvas,17,11));
+  this.enemies.push(new Enemy(this.canvas,3,11));
+  this.enemies.push(new Enemy(this.canvas,4,5));
+  this.enemies.push(new Enemy(this.canvas,11,7));
 
   
 
@@ -242,6 +243,7 @@ Game.prototype.explosion = function (bomb) {
                 break;
 
       case 'E': //Kills the enemy
+                this.sounds.play('dead');
                 for( let j = 0 ; j < this.enemies.length ; j++){
                 
                   if(this.enemies[j].posX === fireCells[i][0] && this.enemies[j].posY === fireCells[i][1]){
