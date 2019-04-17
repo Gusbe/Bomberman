@@ -1,19 +1,19 @@
 function Sounds(){
 
   this.bomb =  document.createElement("audio");
-  this.bomb.src = ("../sound/sound-bomb.mp3");
+  this.bomb.src = ("./sound/sound-bomb.mp3");
 
   this.powerUp =  document.createElement("audio");
-  this.powerUp.src = ("../sound/sound-powerup.wav");
+  this.powerUp.src = ("./sound/sound-powerup.wav");
 
   this.dead =  document.createElement("audio");
-  this.dead.src = ("../sound/sound-died.wav");
+  this.dead.src = ("./sound/sound-died.wav");
 
   this.speed =  document.createElement("audio");
-  this.speed.src = ("../sound/sound-speed.wav");
+  this.speed.src = ("./sound/sound-speed.wav");
 
   this.enemyDies =  document.createElement("audio");
-  this.enemyDies.src = ("../sound/sound-enemyDies.mp3");
+  this.enemyDies.src = ("./sound/sound-enemyDies.mp3");
 
   
 }
