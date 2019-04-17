@@ -6,7 +6,7 @@ function Grid(canvas){
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
   //this.powerUps = ['R','R','R','A','A','A','L','D'];  //R:Bomb range A:Bombs amount L:Slow enemies D:Death 
-  this.powerUps = ['D','D','D','D','D','D','D','D','D','D'];  //R:Bomb range A:Bombs amount L:Slow enemies D:Death 
+  this.powerUps = ['R','R','R','R','R','R','R','R','R','R','R'];  //R:Bomb range A:Bombs amount L:Slow enemies D:Death 
   this.wallImage = new Image();
   this.woodImage = new Image();
   this.groundImage = new Image();

@@ -30,7 +30,13 @@ Game.prototype.movePlayer = function (direction) {
     case 'W': break; //nothing
     case 'B': break; //nothing
     case 'S': break; //nothing
-    case 'R': break; //
+    case 'R': 
+              this.grid.putInGrid('X',this.player.posX,this.player.posY);
+              this.player.move(nextCoordinates[0],nextCoordinates[1]);
+              this.grid.putInGrid('P',nextCoordinates[0],nextCoordinates[1]);
+              this.refreshScreen();
+              this.player.addBombsRange();
+
     case 'A': break; //
     case 'L': break; //
     case 'D': //Death
@@ -56,7 +62,7 @@ Game.prototype.plantBomb = function () {
 
   if(this.player.bombsAvailable > 0){
     this.player.bombsAvailable--;
-    this.bombs.push(new Bomb(this.canvas,this.player.posX,this.player.posY));
+    this.bombs.push(new Bomb(this.canvas,this.player.posX,this.player.posY,this.player.rangeBombs));
     this.grid.putInGrid('B',this.player.posX,this.player.posY);
   }
 }

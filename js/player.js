@@ -4,7 +4,7 @@ function Player(canvas){
   this.posX = 1;
   this.posY = 1;
   this.bombsAvailable = 4;
-  this.speed = 1;
+  this.rangeBombs = 2;
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
   this.bombermanImage = new Image();
@@ -47,6 +47,11 @@ Player.prototype.addBombsAvailable = function (){
 Player.prototype.reduceBombsAvailable = function (){
 
   this.bombsAvailable--;
+}
+
+Player.prototype.addBombsRange = function (){
+
+  this.rangeBombs++;
 }
 
 Player.prototype.print = function () {

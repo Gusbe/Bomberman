@@ -1,10 +1,10 @@
 'use scrict'
 
-function Bomb (canvas, x, y) {
+function Bomb (canvas, x, y, range) {
 
   this.posX = x;
   this.posY = y;
-  this.range = 4;
+  this.range = range;
   this.timer = 2500;  //milliSeconds
   this.durationExplosion = 1000;  //milliSeconds
   this.startTimer = Date.now();
