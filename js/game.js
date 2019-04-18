@@ -200,7 +200,7 @@ Game.prototype.startLoop = function () {
     }
     else if(this.credits > 0){
       this.sounds.play('dead');
-      setTimeout(this.buildGameOverWithLifesScreen,2000);
+      setTimeout(this.buildGameOverWithLifesScreen(this.credits),2000);
     }
     else if(this.credits === 0){
       this.sounds.play('dead');

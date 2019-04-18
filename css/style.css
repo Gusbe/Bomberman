@@ -87,3 +87,13 @@ audio {
   height: 32px;
   width: 32px; 
 }
+
+h1{
+  font-size: 35px;
+  margin-bottom: 50px;
+}
+
+h2{
+  font-size: 25px;
+  margin-bottom: 150px;
+}

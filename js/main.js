@@ -25,21 +25,21 @@ function main(){
       <audio src="./sound/title.mp3" controls autoplay loop>
     </section>`);
     const startButton = document.querySelector('#play');
-    startButton.addEventListener('click', buildGameScreen);
+    startButton.addEventListener('click', function () { buildGameScreen(3) });  //initial lives
   }
 
 
-  function buildGameScreen(){
+  function buildGameScreen(credits){
 
     const gameScreen = buildDom(`
     <section>
       <div id="top-info">
         <div id="lifes">Lifes: 3</div>
         <img src="./img/title-small.jpg" id="title-small">
-        <div id="time">Time: 125</div>
+        <div id="time"></div>
       </div>
       <canvas class="game-container"></canvas>
-      <div id="bombs">Bombs: 2</div>
+      <div id="bombs"></div>
       <audio src="./sound/game.mp3" controls autoplay>
     </section>
     `);
@@ -57,7 +57,7 @@ function main(){
 
     //Here starts the game
 
-    const game = new Game(canvasElement,3);
+    const game = new Game(canvasElement,credits); //Initial lives
     game.startLoop();
     game.setGameOverCallBack(buildGameOverScreen);
     game.setGameOverWithLifesCallBack(buildGameOverWithLifesScreen);
@@ -88,26 +88,28 @@ function main(){
     buildDom(`
     <section>
       <h1>Game Over :(</h1>
-      <button class="restart-button">Restart?</button>
+      <h2>Good luck next time!</h2>
+      <a id="play" href="#">PLAY AGAIN?</a>
       <audio src="./sound/gameover.mp3" controls autoplay loop>
     </section>
     `);
 
-    const restartButton = document.querySelector('.restart-button');
-    restartButton.addEventListener('click',buildGameScreen);
+    const startButton = document.querySelector('#play');
+    startButton.addEventListener('click', buildGameScreen);
   }
 
-  function buildGameOverWithLifesScreen(){
+  function buildGameOverWithLifesScreen(credits){
     
     buildDom(`
     <section>
-      <h1>Game Over. But you can still playing! :)</h1>
-      <button class="restart-button">Restart?</button>
+      <h1>You are dead!</h1>
+      <h2>You still have ${credits} lives!</h2>
+      <a id="play" href="#">PLAY AGAIN?</a>
       <audio src="./sound/gameover.mp3" controls autoplay>
     </section>
     `);
-    const restartButton = document.querySelector('.restart-button');
-    restartButton.addEventListener('click',buildGameScreen);
+    const startButton = document.querySelector('#play');
+    startButton.addEventListener('click', function () { buildGameScreen(credits) });
   }
 
   function buildWinnerScreen(){
@@ -115,11 +117,11 @@ function main(){
     buildDom(`
     <section>
       <h1>You win!</h1>
-      <button class="restart-button">Restart?</button>
+      <a id="play" href="#">PLAY AGAIN?</a>
       <audio src="./sound/complete.mp3" controls autoplay>
     </section>`);
-    const restartButton = document.querySelector('.restart-button');
-    restartButton.addEventListener('click',buildGameScreen);
+    const startButton = document.querySelector('#play');
+    startButton.addEventListener('click', buildGameScreen);
   }
 
   buildSplashScreen();
