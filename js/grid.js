@@ -25,7 +25,6 @@ function Grid(canvas){
   this.bombImage.src = "./img/bomb.png";
   this.fireImage.src = "./img/fire.png";
   this.enemyImage.src = "./img/enemy.png";
-
   this.powerupRange.src = "./img/powerup-range.jpg";
   this.powerupBombs.src = "./img/powerup-bombs.jpg";
   this.powerupSlow.src = "./img/powerup-slow.jpg";
@@ -136,21 +135,22 @@ Grid.prototype.printElement = function(element, x, y){
     case 'D': 
               this.ctx.drawImage(this.powerupDeath, y*32, x*32, 32, 32);
               break;
-
  }
-  
 }
 
 Grid.prototype.countWood = function () {
+
   let count = 0;
   for(let i = 0 ; i < this.board.length ; i++){
     for(let j = 0 ; j < this.board[i].length ; j++){
       
       if (this.board[i][j] === 'S'){
+
         count++;
       }
     }
   }
+
   return count;
 }
 
@@ -170,6 +170,7 @@ Grid.prototype.roulettePowerUp = function () {
 
       return power;
     }
+    
     return false;
   }
 
