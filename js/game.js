@@ -165,6 +165,7 @@ Game.prototype.startLoop = function () {
     this.moveEnemies(this.grid);
 
     for(let i = 0 ; i < this.bombs.length ; i++){
+
       if(this.bombs[i].checkIfExplodes()){
 
         this.explosion(this.bombs[i]);
@@ -174,6 +175,7 @@ Game.prototype.startLoop = function () {
       if(this.bombs[i].checkRemoveFire()){
         
         for(let j = 0 ; j < this.bombs[i].fireCells.length ; j++){
+          
           if( this.grid.getCellElement(this.bombs[i].fireCells[j][0], this.bombs[i].fireCells[j][1]) !== 'R'
               && this.grid.getCellElement(this.bombs[i].fireCells[j][0], this.bombs[i].fireCells[j][1]) !== 'A'
               && this.grid.getCellElement(this.bombs[i].fireCells[j][0], this.bombs[i].fireCells[j][1]) !== 'L'

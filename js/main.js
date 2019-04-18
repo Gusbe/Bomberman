@@ -24,6 +24,7 @@ function main(){
 
       <audio src="./sound/title.mp3" controls autoplay loop>
     </section>`);
+
     const startButton = document.querySelector('#play');
     startButton.addEventListener('click', function () { buildGameScreen(3) });  //initial lives
   }
@@ -44,21 +45,18 @@ function main(){
     </section>
     `);
     
-    //make the canvas fits in the screen
+    //Size of the game board canvas.
     const gameContainerElement = document.querySelector('.game-container');
-    //const width = gameContainerElement.offsetWidth;
-    //const height = gameContainerElement.offsetHeight;
     width = 672;
     height = 416;
-
     const canvasElement = document.querySelector('canvas');
     canvasElement.setAttribute('width', width);
     canvasElement.setAttribute('height', height);
 
     //Here starts the game
-
     const game = new Game(canvasElement,credits); //Initial lives
     game.startLoop();
+
     game.setGameOverCallBack(buildGameOverScreen);
     game.setGameOverWithLifesCallBack(buildGameOverWithLifesScreen);
     game.setWinnerCallBack(buildWinnerScreen);
@@ -69,12 +67,11 @@ function main(){
       
       switch(event.keyCode){
         
-        //case 16: game.plantBomb(); break; //shift right key
-        case 32: game.plantBomb(); break; //Space key
-        case 37: game.movePlayer('L'); break; //Left key
-        case 38: game.movePlayer('U');  break; //Up key
-        case 39: game.movePlayer('R');  break; //Right key
-        case 40: game.movePlayer('D');  break; //Down key
+        case 32: game.plantBomb(); break;       //Space key
+        case 37: game.movePlayer('L'); break;   //Left key
+        case 38: game.movePlayer('U');  break;  //Up key
+        case 39: game.movePlayer('R');  break;  //Right key
+        case 40: game.movePlayer('D');  break;  //Down key
         default: break;
       }
 
@@ -108,6 +105,7 @@ function main(){
       <audio src="./sound/gameover.mp3" controls autoplay>
     </section>
     `);
+
     const startButton = document.querySelector('#play');
     startButton.addEventListener('click', function () { buildGameScreen(credits) });
   }
@@ -120,8 +118,9 @@ function main(){
       <a id="play" href="#">PLAY AGAIN?</a>
       <audio src="./sound/complete.mp3" controls autoplay>
     </section>`);
+    
     const startButton = document.querySelector('#play');
-    startButton.addEventListener('click', function () { buildGameScreen(3) });
+    startButton.addEventListener('click', function () { buildGameScreen(3) });  //Initial credits = 3.
   }
 
   buildSplashScreen();
