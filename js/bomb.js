@@ -39,11 +39,13 @@ Bomb.prototype.printFire = function () {
 Bomb.prototype.checkIfExplodes = function (){
 
   if(this.startTimer + this.timer < Date.now() && !this.hasExploded){
+
     this.hasExploded = true;
 
     return true;
   }
   else{
+
     return false;
   }
 }
@@ -51,6 +53,7 @@ Bomb.prototype.checkIfExplodes = function (){
 Bomb.prototype.makeExplode = function (x, y){
   
   if(this.posX === x && this.posY === y && !this.hasExploded){
+
     this.startTimer = Date.now() - this.timer;
   }
 }
@@ -58,9 +61,11 @@ Bomb.prototype.makeExplode = function (x, y){
 Bomb.prototype.checkRemoveFire = function (){
 
   if(this.startTimer + this.timer + this.durationExplosion < Date.now() && this.hasExploded){
+
     return true;
   }
   else{
+
     return false;
   }
 }
@@ -73,12 +78,16 @@ Bomb.prototype.getFireCells = function (grid){
   for( let i = 0 ; i < this.range ; i++){
 
     if (grid.getCellElement(this.posX,this.posY-i) !== 'W'){
+
       this.fireCells.push([this.posX,this.posY-i]);
+
       if (grid.getCellElement(this.posX,this.posY-i) === 'S'){
+
         i = this.range;
       }
     }
     else{
+
       i = this.range;
     }
   }
@@ -87,12 +96,16 @@ Bomb.prototype.getFireCells = function (grid){
   for( let i = 0 ; i < this.range ; i++){
 
     if (grid.getCellElement(this.posX+i,this.posY) !== 'W'){
+
       this.fireCells.push([this.posX+i,this.posY]);
+
       if (grid.getCellElement(this.posX+i,this.posY) === 'S'){
+
         i = this.range;
       }
     }
     else{
+
       i = this.range;
     }
   }
@@ -101,12 +114,16 @@ Bomb.prototype.getFireCells = function (grid){
   for( let i = 0 ; i < this.range ; i++){
 
     if (grid.getCellElement(this.posX,this.posY+i) !== 'W'){
+
       this.fireCells.push([this.posX,this.posY+i]);
+
       if (grid.getCellElement(this.posX,this.posY+i) === 'S'){
+
         i = this.range;
       }
     }
     else{
+
       i = this.range;
     }
   }
@@ -115,12 +132,16 @@ Bomb.prototype.getFireCells = function (grid){
   for( let i = 0 ; i < this.range ; i++){
 
     if (grid.getCellElement(this.posX-i,this.posY) !== 'W'){
+
       this.fireCells.push([this.posX-i,this.posY]);
+
       if (grid.getCellElement(this.posX-i,this.posY) === 'S'){
+
         i = this.range;
       }
     }
     else{
+      
       i = this.range;
     }
   }
