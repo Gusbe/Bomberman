@@ -16,6 +16,10 @@ function Sounds(){
   this.enemyDies.src = ("./sound/sound-enemyDies.mp3");
 
   
+  this.plant =  document.createElement("audio");
+  this.plant.src = ("./sound/sound-plant.wav");
+
+  
 }
 
 Sounds.prototype.play = function (event){
@@ -31,6 +35,8 @@ Sounds.prototype.play = function (event){
     case 'speed':     this.speed.play();
                       break;
     case 'enemyDies': this.enemyDies.play();
+                      break;
+    case 'plant':     this.plant.play();
                       break;
   }   
 }

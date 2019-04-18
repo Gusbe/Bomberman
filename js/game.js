@@ -79,6 +79,7 @@ Game.prototype.movePlayer = function (direction) {
 Game.prototype.plantBomb = function () {
 
   if(this.player.bombsAvailable > 0){
+    this.sounds.play('plant');
     this.player.bombsAvailable--;
     this.bombs.push(new Bomb(this.canvas,this.player.posX,this.player.posY,this.player.rangeBombs));
     this.grid.putInGrid('B',this.player.posX,this.player.posY);
@@ -263,6 +264,10 @@ Game.prototype.explosion = function (bomb) {
     }
 
     this.grid.putInGrid('F', fireCells[i][0], fireCells[i][1]); //Put fire in the grid
+
+    if(this.player.posX === fireCells[i][0] && this.player.posY === fireCells[i][1]){
+      playerDead = true;
+    }
 
     for(let k = 0 ; k < arrayPowerUps.length ; k++){
 
