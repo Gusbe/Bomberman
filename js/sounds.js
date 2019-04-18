@@ -26,7 +26,7 @@ Sounds.prototype.play = function (event){
 
   switch (event){
 
-    case 'explosion': this.bomb.play(); this.bomb.volume = 0.7;
+    case 'explosion': this.bomb.play(); this.bomb.volume = 0.9;
                       break;
     case 'powerUp':   this.powerUp.play(); this.powerUp.volume = 0.7;
                       break;

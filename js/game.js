@@ -180,6 +180,7 @@ Game.prototype.startLoop = function () {
               && this.grid.getCellElement(this.bombs[i].fireCells[j][0], this.bombs[i].fireCells[j][1]) !== 'D'){
 
                 this.grid.putInGrid('X', this.bombs[i].fireCells[j][0],  this.bombs[i].fireCells[j][1]);
+                
           }
         }
         this.bombs.splice(i, 1);
@@ -265,7 +266,7 @@ Game.prototype.explosion = function (bomb) {
 
     this.grid.putInGrid('F', fireCells[i][0], fireCells[i][1]); //Put fire in the grid
 
-    if(this.player.posX === fireCells[i][0] && this.player.posY === fireCells[i][1]){
+    if(this.player.posX === fireCells[i][0] && this.player.posY === fireCells[i][1]){ //if the player is in the same cell than the bomb
       playerDead = true;
     }
 
