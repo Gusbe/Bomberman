@@ -14,10 +14,13 @@ function Enemy(canvas, initX, initY){
 Enemy.prototype.canIMoveNow = function (){
 
   if(this.lastMove + this.speed < Date.now()){
+
     this.lastMove = Date.now();
+
     return true;
   }
   else{
+
     return false;
   }
 }
@@ -34,6 +37,7 @@ Enemy.prototype.NextPosition = function(direction) {
   let nextPositionX = this.posX;
 
   switch(direction){
+
     case 'U': nextPositionY--;  break;  //Up
     case 'D': nextPositionY++;  break;  //Down
     case 'R': nextPositionX++;  break;  //Rigth
@@ -56,9 +60,11 @@ Enemy.prototype.print = function () {
 Enemy.prototype.kills = function (x, y) {
 
   if(this.posX === x && this.posY === y){
+
     return true;
   }
   else{
+
     return false;
   }
   
@@ -66,8 +72,9 @@ Enemy.prototype.kills = function (x, y) {
 
 Enemy.prototype.GenerateRandomMovement = function (grid) {
 
-  //Erratic movement for the moment
+  //Erratic movement
   let options = [];
+
   if(grid.getCellElement(this.posX,this.posY-1) !== 'S' && grid.getCellElement(this.posX,this.posY-1) !== 'W' && grid.getCellElement(this.posX,this.posY-1) !== 'B' && grid.getCellElement(this.posX,this.posY-1) !== 'E'){ options.push('U'); }
   if(grid.getCellElement(this.posX+1,this.posY) !== 'S' && grid.getCellElement(this.posX+1,this.posY) !== 'W' && grid.getCellElement(this.posX+1,this.posY) !== 'B' && grid.getCellElement(this.posX+1,this.posY) !== 'E'){ options.push('R'); }
   if(grid.getCellElement(this.posX,this.posY+1) !== 'S' && grid.getCellElement(this.posX,this.posY+1) !== 'W' && grid.getCellElement(this.posX,this.posY+1) !== 'B' && grid.getCellElement(this.posX,this.posY+1) !== 'E'){ options.push('D'); }
