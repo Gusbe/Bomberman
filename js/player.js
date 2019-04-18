@@ -30,6 +30,7 @@ Player.prototype.nextPosition = function(direction) {
   let nextPositionX = this.posX;
 
   switch(direction){
+
     case 'U': nextPositionY--;  break;  //Up
     case 'D': nextPositionY++;  break;  //Down
     case 'R': nextPositionX++;  break;  //Rigth
@@ -62,10 +63,13 @@ Player.prototype.print = function () {
 Player.prototype.printDead = function (causeOfDeath) {
   
   if(causeOfDeath === 'fire'){
+
     this.ctx.drawImage(this.fireImage, this.posX*32, this.posY*32, 32, 32);
   }
   else{
+
     this.ctx.drawImage(this.groundImage, this.posX*32, this.posY*32, 32, 32);
   }
+  
   this.ctx.drawImage(this.deadBombermanImage, this.posX*32, this.posY*32, 32, 32);
 }
