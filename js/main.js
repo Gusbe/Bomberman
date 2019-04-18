@@ -95,7 +95,7 @@ function main(){
     `);
 
     const startButton = document.querySelector('#play');
-    startButton.addEventListener('click', buildGameScreen);
+    startButton.addEventListener('click', function () { buildGameScreen(3) });
   }
 
   function buildGameOverWithLifesScreen(credits){
@@ -121,7 +121,7 @@ function main(){
       <audio src="./sound/complete.mp3" controls autoplay>
     </section>`);
     const startButton = document.querySelector('#play');
-    startButton.addEventListener('click', buildGameScreen);
+    startButton.addEventListener('click', function () { buildGameScreen(3) });
   }
 
   buildSplashScreen();

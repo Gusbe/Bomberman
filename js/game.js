@@ -306,7 +306,7 @@ Game.prototype.updateScreenCounters = function (numberOfBombs){
   let bombsInfo = document.getElementById('bombs');
   let timeInfo = document.getElementById('time');
   
-  let bombsScreen = "";
+  let bombsScreen = "Bombs: ";
   for (let i = 0 ; i < numberOfBombs ; i ++){
     bombsScreen = bombsScreen + `<img src="./img/bomb.png" id="bombsScreen">`;
   }
@@ -317,7 +317,7 @@ Game.prototype.updateScreenCounters = function (numberOfBombs){
 Game.prototype.updateScreenLifes = function (){
   let lifes = document.getElementById('lifes');
   
-  let lifesScreen = "";
+  let lifesScreen = "Lifes: ";
   for (let i = 0 ; i < this.credits ; i ++){
     lifesScreen = lifesScreen + `<img src="./img/bomberman.gif" id="bombsScreen">`;
   }
