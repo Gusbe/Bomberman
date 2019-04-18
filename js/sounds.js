@@ -14,12 +14,9 @@ function Sounds(){
 
   this.enemyDies =  document.createElement("audio");
   this.enemyDies.src = ("./sound/sound-enemyDies.mp3");
-
   
   this.plant =  document.createElement("audio");
   this.plant.src = ("./sound/sound-plant.wav");
-
-  
 }
 
 Sounds.prototype.play = function (event){
