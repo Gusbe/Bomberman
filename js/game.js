@@ -329,7 +329,7 @@ Game.prototype.updateScreenCounters = function (numberOfBombs){
   let bombsInfo = document.getElementById('bombs');
   let timeInfo = document.getElementById('time');
   
-  let bombsScreen = "Bombs: ";
+  let bombsScreen = "";
   for (let i = 0 ; i < numberOfBombs ; i ++){
 
     bombsScreen = bombsScreen + `<img src="./img/bomb.png" id="bombsScreen">`;
